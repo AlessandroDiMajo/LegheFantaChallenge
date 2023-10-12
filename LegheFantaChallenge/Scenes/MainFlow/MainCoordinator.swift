@@ -14,7 +14,7 @@ class MainCoordinator: Coordinator {
     // MARK: - Architecture properties
     private var navigator: UINavigationController
     private let window: UIWindow
-    fileprivate let tabBarController = UITabBarController()
+    fileprivate let tabBarController = LegheFantaChallengeTabBarController()
 
     init(window: UIWindow) {
         navigator = UINavigationController(rootViewController: tabBarController)
@@ -24,18 +24,28 @@ class MainCoordinator: Coordinator {
     func start() {
         print("MainCoordinator start")
         
-        let firstVC = UIViewController()
-        firstVC.view.backgroundColor = .white
-        let secondVC = UIViewController()
-        secondVC.view.backgroundColor = .white
+        let firstVC = PlayersViewController(viewModel: .init())
+        firstVC.tabBarItem = UITabBarItem(
+            title: "Lista calciatori",
+            image: UIImage(systemName: "person.fill"),
+            selectedImage: UIImage(systemName: "person.fill")?.withTintColor(Colors.blue)
+        )
+        
+        let secondVC = FavouritePlayersViewController(viewModel: .init())
+        secondVC.tabBarItem = UITabBarItem(
+            title: "Preferiti",
+            image: UIImage(systemName: "star.fill"),
+            selectedImage: UIImage(systemName: "star.fill")?.withTintColor(Colors.blue)
+        )
+
         tabBarController.viewControllers = [
             firstVC,
             secondVC
         ]
-        tabBarController.tabBar.tintColor = .blue
-        tabBarController.tabBar.backgroundColor = .systemGray2
-        tabBarController.tabBar.backgroundImage = UIImage()
-        tabBarController.tabBar.shadowImage = UIImage()
-        window.switchRootViewController(to: tabBarController)
+       
+        _ = firstVC.view
+        _ = secondVC.view
+        
+        window.switchRootViewController(to: navigator)
     }
 }

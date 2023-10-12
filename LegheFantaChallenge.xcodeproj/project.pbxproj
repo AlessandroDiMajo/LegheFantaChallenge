@@ -15,6 +15,15 @@
 		FA8F19962AD85D0000004C60 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F19952AD85D0000004C60 /* Coordinator.swift */; };
 		FA8F199D2AD85E1A00004C60 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F199C2AD85E1A00004C60 /* MainCoordinator.swift */; };
 		FA8F19A72AD85F2700004C60 /* UIWindow+SwitchRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F19A62AD85F2700004C60 /* UIWindow+SwitchRootViewController.swift */; };
+		FAAF40452AD87A0800A0BD19 /* FavouritePlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40422AD87A0800A0BD19 /* FavouritePlayersViewController.swift */; };
+		FAAF40462AD87A0800A0BD19 /* FavouritePlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40432AD87A0800A0BD19 /* FavouritePlayersView.swift */; };
+		FAAF40472AD87A0800A0BD19 /* FavouritePlayersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40442AD87A0800A0BD19 /* FavouritePlayersViewModel.swift */; };
+		FAAF404B2AD87A2300A0BD19 /* PlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40482AD87A2300A0BD19 /* PlayersViewController.swift */; };
+		FAAF404C2AD87A2300A0BD19 /* PlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40492AD87A2300A0BD19 /* PlayersView.swift */; };
+		FAAF404D2AD87A2300A0BD19 /* PlayersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF404A2AD87A2300A0BD19 /* PlayersViewModel.swift */; };
+		FAAF40502AD8822D00A0BD19 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF404F2AD8822D00A0BD19 /* Colors.swift */; };
+		FAAF40532AD882BC00A0BD19 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40522AD882BC00A0BD19 /* UIColor+hex.swift */; };
+		FAAF40552AD886F300A0BD19 /* LegheFantaChallengeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40542AD886F300A0BD19 /* LegheFantaChallengeTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +39,15 @@
 		FA8F19952AD85D0000004C60 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		FA8F199C2AD85E1A00004C60 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		FA8F19A62AD85F2700004C60 /* UIWindow+SwitchRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+SwitchRootViewController.swift"; sourceTree = "<group>"; };
+		FAAF40422AD87A0800A0BD19 /* FavouritePlayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlayersViewController.swift; sourceTree = "<group>"; };
+		FAAF40432AD87A0800A0BD19 /* FavouritePlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlayersView.swift; sourceTree = "<group>"; };
+		FAAF40442AD87A0800A0BD19 /* FavouritePlayersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlayersViewModel.swift; sourceTree = "<group>"; };
+		FAAF40482AD87A2300A0BD19 /* PlayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersViewController.swift; sourceTree = "<group>"; };
+		FAAF40492AD87A2300A0BD19 /* PlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersView.swift; sourceTree = "<group>"; };
+		FAAF404A2AD87A2300A0BD19 /* PlayersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersViewModel.swift; sourceTree = "<group>"; };
+		FAAF404F2AD8822D00A0BD19 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		FAAF40522AD882BC00A0BD19 /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
+		FAAF40542AD886F300A0BD19 /* LegheFantaChallengeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegheFantaChallengeTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +76,6 @@
 				0D2376E503157C7DC4D3663A /* Pods-LegheFantaChallenge.debug.xcconfig */,
 				838FE4C827194E102E34C597 /* Pods-LegheFantaChallenge.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -83,6 +100,7 @@
 		FA8F197F2AD85C4000004C60 /* LegheFantaChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				FAAF404E2AD8821800A0BD19 /* AppStyle */,
 				FA8F199A2AD85DFA00004C60 /* Scenes */,
 				FA8F19982AD85D8300004C60 /* App */,
 				FA8F19972AD85D4300004C60 /* Infrastructure */,
@@ -138,7 +156,7 @@
 		FA8F199B2AD85E0500004C60 /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
-				FA8F19A12AD85E7000004C60 /* FavouritesViewController */,
+				FA8F19A12AD85E7000004C60 /* FavouritePlayersViewController */,
 				FA8F19A02AD85E6600004C60 /* PlayersViewController */,
 				FA8F199C2AD85E1A00004C60 /* MainCoordinator.swift */,
 			);
@@ -148,20 +166,27 @@
 		FA8F19A02AD85E6600004C60 /* PlayersViewController */ = {
 			isa = PBXGroup;
 			children = (
+				FAAF40482AD87A2300A0BD19 /* PlayersViewController.swift */,
+				FAAF40492AD87A2300A0BD19 /* PlayersView.swift */,
+				FAAF404A2AD87A2300A0BD19 /* PlayersViewModel.swift */,
 			);
 			path = PlayersViewController;
 			sourceTree = "<group>";
 		};
-		FA8F19A12AD85E7000004C60 /* FavouritesViewController */ = {
+		FA8F19A12AD85E7000004C60 /* FavouritePlayersViewController */ = {
 			isa = PBXGroup;
 			children = (
+				FAAF40422AD87A0800A0BD19 /* FavouritePlayersViewController.swift */,
+				FAAF40432AD87A0800A0BD19 /* FavouritePlayersView.swift */,
+				FAAF40442AD87A0800A0BD19 /* FavouritePlayersViewModel.swift */,
 			);
-			path = FavouritesViewController;
+			path = FavouritePlayersViewController;
 			sourceTree = "<group>";
 		};
 		FA8F19A42AD85F0E00004C60 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FAAF40512AD882AE00A0BD19 /* UIColor */,
 				FA8F19A52AD85F1700004C60 /* UIWindow */,
 			);
 			path = Extensions;
@@ -173,6 +198,23 @@
 				FA8F19A62AD85F2700004C60 /* UIWindow+SwitchRootViewController.swift */,
 			);
 			path = UIWindow;
+			sourceTree = "<group>";
+		};
+		FAAF404E2AD8821800A0BD19 /* AppStyle */ = {
+			isa = PBXGroup;
+			children = (
+				FAAF404F2AD8822D00A0BD19 /* Colors.swift */,
+				FAAF40542AD886F300A0BD19 /* LegheFantaChallengeTabBarController.swift */,
+			);
+			path = AppStyle;
+			sourceTree = "<group>";
+		};
+		FAAF40512AD882AE00A0BD19 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				FAAF40522AD882BC00A0BD19 /* UIColor+hex.swift */,
+			);
+			path = UIColor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,10 +332,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA8F19A72AD85F2700004C60 /* UIWindow+SwitchRootViewController.swift in Sources */,
+				FAAF40502AD8822D00A0BD19 /* Colors.swift in Sources */,
+				FAAF40462AD87A0800A0BD19 /* FavouritePlayersView.swift in Sources */,
+				FAAF40452AD87A0800A0BD19 /* FavouritePlayersViewController.swift in Sources */,
+				FAAF404D2AD87A2300A0BD19 /* PlayersViewModel.swift in Sources */,
+				FAAF40472AD87A0800A0BD19 /* FavouritePlayersViewModel.swift in Sources */,
 				FA8F19962AD85D0000004C60 /* Coordinator.swift in Sources */,
+				FAAF404C2AD87A2300A0BD19 /* PlayersView.swift in Sources */,
 				FA8F19812AD85C4000004C60 /* AppDelegate.swift in Sources */,
 				FA8F199D2AD85E1A00004C60 /* MainCoordinator.swift in Sources */,
+				FAAF40552AD886F300A0BD19 /* LegheFantaChallengeTabBarController.swift in Sources */,
 				FA8F19832AD85C4000004C60 /* SceneDelegate.swift in Sources */,
+				FAAF404B2AD87A2300A0BD19 /* PlayersViewController.swift in Sources */,
+				FAAF40532AD882BC00A0BD19 /* UIColor+hex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
