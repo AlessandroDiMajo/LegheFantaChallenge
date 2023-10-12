@@ -45,6 +45,8 @@ class PlayersViewController: UIViewController {
             self?.aview?.activityIndicator.stopAnimating()
             self?.aview?.activityIndicator.isHidden = true
         }
+        navigationController?.navigationBar.topItem?.titleView = aview?.searchBar
+        aview?.searchBar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,5 +60,11 @@ class PlayersViewController: UIViewController {
     
     private func bind() {
         guard let aView = aview else { return }
+    }
+}
+
+extension PlayersViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
     }
 }
