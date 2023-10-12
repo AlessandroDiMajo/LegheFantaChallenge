@@ -1,0 +1,6 @@
+framework module Pods_LegheFantaChallenge {
+  umbrella header "Pods-LegheFantaChallenge-umbrella.h"
+
+  export *
+  module * { export * }
+}

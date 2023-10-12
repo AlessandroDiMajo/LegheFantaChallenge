@@ -1,0 +1,57 @@
+disabled_rules: # rule identifiers to exclude from running
+  - colon
+  - comma
+  - control_statement
+  - todo
+  - identifier_name
+  - force_cast
+  - cyclomatic_complexity
+  - trailing_whitespace
+  - force_try
+  - type_body_length
+  - for_where
+  - unused_closure_parameter
+  - nesting
+  - line_length
+  - empty_enum_arguments
+  - type_name
+  - inclusive_language
+
+#to re-enable
+  - unused_optional_binding
+  - multiple_closures_with_trailing_closure
+  - discarded_notification_center_observer
+  - function_parameter_count
+  - vertical_parameter_alignment
+  - compiler_protocol_init
+  - legacy_constructor
+
+opt_in_rules: # some rules are only opt-in
+  - empty_count
+  # Find all the available rules by running:
+  # swiftlint rules
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+  - Pods
+  - Vendors
+  - Uniwhere/Source/Utils/Log/
+
+file_length:
+  warning: 1300
+  error: 1400
+function_body_length:
+  warning: 800
+  error: 1200
+function_body_length:
+  warning: 100
+  error: 120
+identifier_name:
+  min_length: # only min_length
+    error: 4 # only error
+  excluded: # excluded via string array
+    - id
+    - URL
+    - GlobalAPIKey
+large_tuple:
+ warning: 6
+ error: 10	
