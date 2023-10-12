@@ -11,10 +11,18 @@ class PlayersView: UIView {
 
     lazy var activityIndicator: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(style: .large)
-        view.color = Colors.gray
+        view.color = Colors.gray2
         view.isHidden = true
         return view
     }()
+
+    lazy var tableView: UITableView = {
+        let view = UITableView(frame: .zero)
+        view.backgroundColor = Colors.white
+        view.showsVerticalScrollIndicator = false
+        return view
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -27,10 +35,16 @@ class PlayersView: UIView {
     
     private func configureUI() {
         backgroundColor = Colors.white
+        addSubview(tableView)
         addSubview(activityIndicator)
     }
 
     private func configureConstraints() {
         activityIndicator.centerAnchors == centerAnchors
+    
+        tableView.topAnchor == safeAreaLayoutGuide.topAnchor
+        tableView.leadingAnchor == leadingAnchor
+        tableView.trailingAnchor == trailingAnchor
+        tableView.bottomAnchor == bottomAnchor
     }
 }

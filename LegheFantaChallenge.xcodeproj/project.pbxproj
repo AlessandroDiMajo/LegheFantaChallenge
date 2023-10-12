@@ -24,6 +24,7 @@
 		FAAF40502AD8822D00A0BD19 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF404F2AD8822D00A0BD19 /* Colors.swift */; };
 		FAAF40532AD882BC00A0BD19 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40522AD882BC00A0BD19 /* UIColor+hex.swift */; };
 		FAAF40552AD886F300A0BD19 /* LegheFantaChallengeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40542AD886F300A0BD19 /* LegheFantaChallengeTabBarController.swift */; };
+		FAAF40572AD89BA900A0BD19 /* LegheFantaChallengeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40562AD89BA900A0BD19 /* LegheFantaChallengeNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		FAAF404F2AD8822D00A0BD19 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FAAF40522AD882BC00A0BD19 /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		FAAF40542AD886F300A0BD19 /* LegheFantaChallengeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegheFantaChallengeTabBarController.swift; sourceTree = "<group>"; };
+		FAAF40562AD89BA900A0BD19 /* LegheFantaChallengeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegheFantaChallengeNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 			children = (
 				FAAF404F2AD8822D00A0BD19 /* Colors.swift */,
 				FAAF40542AD886F300A0BD19 /* LegheFantaChallengeTabBarController.swift */,
+				FAAF40562AD89BA900A0BD19 /* LegheFantaChallengeNavigationController.swift */,
 			);
 			path = AppStyle;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				FA8F19832AD85C4000004C60 /* SceneDelegate.swift in Sources */,
 				FAAF404B2AD87A2300A0BD19 /* PlayersViewController.swift in Sources */,
 				FAAF40532AD882BC00A0BD19 /* UIColor+hex.swift in Sources */,
+				FAAF40572AD89BA900A0BD19 /* LegheFantaChallengeNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,12 +12,12 @@ class MainCoordinator: Coordinator {
     var coordinators: [Coordinator] = []
 
     // MARK: - Architecture properties
-    private var navigator: UINavigationController
+    private var navigator: LegheFantaChallengeNavigationController
     private let window: UIWindow
     fileprivate let tabBarController = LegheFantaChallengeTabBarController()
 
     init(window: UIWindow) {
-        navigator = UINavigationController(rootViewController: tabBarController)
+        navigator = LegheFantaChallengeNavigationController(rootViewController: tabBarController)
         self.window = window
     }
 
@@ -39,8 +39,8 @@ class MainCoordinator: Coordinator {
         )
 
         tabBarController.viewControllers = [
-            firstVC,
-            secondVC
+             firstVC,
+             secondVC
         ]
        
         _ = firstVC.view
