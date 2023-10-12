@@ -11,6 +11,7 @@ target 'LegheFantaChallenge' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'SwiftLint'
+  pod 'IQKeyboardManager'
 end
 
 
