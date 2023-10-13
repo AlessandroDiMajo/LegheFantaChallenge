@@ -16,6 +16,12 @@ class PlayersView: UIView {
         return view
     }()
 
+    lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "Cerca calciatori"
+        return searchBar
+    }()
+
     lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero)
         view.backgroundColor = Colors.white
