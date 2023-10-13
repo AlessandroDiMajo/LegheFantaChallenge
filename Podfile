@@ -9,6 +9,7 @@ target 'LegheFantaChallenge' do
   pod 'Kingfisher'
   pod 'Anchorage'
   pod 'RxSwift'
+  pod 'NotificationBannerSwift', '~> 3.0.0'
   pod 'RxCocoa'
   pod 'SwiftLint'
   pod 'IQKeyboardManager'
