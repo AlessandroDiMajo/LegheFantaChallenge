@@ -74,8 +74,9 @@ class PlayersViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.footballPlayersFilteredRelay
-            .bind { [weak self] _ in
+            .bind { [weak self] playersList in
                 DispatchQueue.main.async {
+                    self?.aview?.emptyStateLabel.isHidden = !(playersList.isEmpty)
                     self?.aview?.collectionView.reloadData()
                 }
             }

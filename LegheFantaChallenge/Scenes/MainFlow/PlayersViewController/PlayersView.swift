@@ -29,6 +29,15 @@ class PlayersView: UIView {
         return view
     }()
 
+    lazy var emptyStateLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.isHidden = true
+        label.text = "La ricerca non ha prodotto risultati"
+        label.textColor = Colors.gray4
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -43,6 +52,7 @@ class PlayersView: UIView {
         backgroundColor = Colors.white
         addSubview(collectionView)
         addSubview(activityIndicator)
+        addSubview(emptyStateLabel)
     }
 
     private func configureConstraints() {
@@ -52,5 +62,7 @@ class PlayersView: UIView {
         collectionView.leadingAnchor == leadingAnchor
         collectionView.trailingAnchor == trailingAnchor
         collectionView.bottomAnchor == bottomAnchor
+        
+        emptyStateLabel.centerAnchors == centerAnchors
     }
 }
