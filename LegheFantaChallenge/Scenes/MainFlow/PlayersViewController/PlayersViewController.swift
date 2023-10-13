@@ -41,12 +41,13 @@ class PlayersViewController: UIViewController {
         
         aview?.activityIndicator.isHidden = false
         aview?.activityIndicator.startAnimating()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
-            self?.aview?.activityIndicator.stopAnimating()
-            self?.aview?.activityIndicator.isHidden = true
+        viewModel.retrieveFootballPlayers() { [weak self] in
+            DispatchQueue.main.async {
+                self?.aview?.activityIndicator.stopAnimating()
+                self?.aview?.activityIndicator.isHidden = true
+            }
         }
         navigationController?.navigationBar.topItem?.titleView = aview?.searchBar
-        aview?.searchBar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,11 +61,22 @@ class PlayersViewController: UIViewController {
     
     private func bind() {
         guard let aView = aview else { return }
-    }
-}
-
-extension PlayersViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        
+        aView.searchBar.searchTextField.rx.text
+            .debounce(.milliseconds(400), scheduler: MainScheduler.instance)
+            .bind { [weak self] text in
+                guard let text = text else { return }
+                self?.viewModel.filterFootballPlayersList(text: text)
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.footballPlayersFilteredRelay
+            .bind { [weak self] universities in
+                guard let isFirstFetchDone = self?.viewModel.isFirstFetchDone else { return }
+                DispatchQueue.main.async {
+                    self?.aview?.tableView.reloadData()
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		993AA1F9F07A3A8EF6B2A6D5 /* Pods_LegheFantaChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D94DC0F1C5A3288C2F009B /* Pods_LegheFantaChallenge.framework */; };
+		FA14598A2AD977F500F5BF4E /* FootballPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1459892AD977F500F5BF4E /* FootballPlayer.swift */; };
+		FA14598C2AD97A3300F5BF4E /* LegheFantaDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA14598B2AD97A3300F5BF4E /* LegheFantaDTO.swift */; };
 		FA8F19812AD85C4000004C60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F19802AD85C4000004C60 /* AppDelegate.swift */; };
 		FA8F19832AD85C4000004C60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F19822AD85C4000004C60 /* SceneDelegate.swift */; };
 		FA8F198A2AD85C4200004C60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8F19892AD85C4200004C60 /* Assets.xcassets */; };
@@ -31,6 +33,8 @@
 		03D94DC0F1C5A3288C2F009B /* Pods_LegheFantaChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LegheFantaChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D2376E503157C7DC4D3663A /* Pods-LegheFantaChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LegheFantaChallenge.debug.xcconfig"; path = "Target Support Files/Pods-LegheFantaChallenge/Pods-LegheFantaChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		838FE4C827194E102E34C597 /* Pods-LegheFantaChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LegheFantaChallenge.release.xcconfig"; path = "Target Support Files/Pods-LegheFantaChallenge/Pods-LegheFantaChallenge.release.xcconfig"; sourceTree = "<group>"; };
+		FA1459892AD977F500F5BF4E /* FootballPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootballPlayer.swift; sourceTree = "<group>"; };
+		FA14598B2AD97A3300F5BF4E /* LegheFantaDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegheFantaDTO.swift; sourceTree = "<group>"; };
 		FA8F197D2AD85C4000004C60 /* LegheFantaChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LegheFantaChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8F19802AD85C4000004C60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA8F19822AD85C4000004C60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +85,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FA1459882AD977E000F5BF4E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA1459892AD977F500F5BF4E /* FootballPlayer.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FA8F19742AD85C4000004C60 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +114,7 @@
 		FA8F197F2AD85C4000004C60 /* LegheFantaChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				FA1459882AD977E000F5BF4E /* Models */,
 				FAAF404E2AD8821800A0BD19 /* AppStyle */,
 				FA8F199A2AD85DFA00004C60 /* Scenes */,
 				FA8F19982AD85D8300004C60 /* App */,
@@ -115,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				FA8F19952AD85D0000004C60 /* Coordinator.swift */,
+				FA14598B2AD97A3300F5BF4E /* LegheFantaDTO.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -344,11 +358,13 @@
 				FAAF404C2AD87A2300A0BD19 /* PlayersView.swift in Sources */,
 				FA8F19812AD85C4000004C60 /* AppDelegate.swift in Sources */,
 				FA8F199D2AD85E1A00004C60 /* MainCoordinator.swift in Sources */,
+				FA14598C2AD97A3300F5BF4E /* LegheFantaDTO.swift in Sources */,
 				FAAF40552AD886F300A0BD19 /* LegheFantaChallengeTabBarController.swift in Sources */,
 				FA8F19832AD85C4000004C60 /* SceneDelegate.swift in Sources */,
 				FAAF404B2AD87A2300A0BD19 /* PlayersViewController.swift in Sources */,
 				FAAF40532AD882BC00A0BD19 /* UIColor+hex.swift in Sources */,
 				FAAF40572AD89BA900A0BD19 /* LegheFantaChallengeNavigationController.swift in Sources */,
+				FA14598A2AD977F500F5BF4E /* FootballPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
