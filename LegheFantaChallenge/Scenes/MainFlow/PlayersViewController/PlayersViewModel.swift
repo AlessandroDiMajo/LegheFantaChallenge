@@ -56,4 +56,8 @@ class PlayersViewModel {
             print("sortedPlayer now are \(sortedPlayers.count)")
         footballPlayersFilteredRelay.accept(sortedPlayers)
     }
+    
+    func didTappedStarButton(footballPlayer: FootballPlayer) {
+        print("didTappedStarButton with \(footballPlayer.playerName)")
+    }
 }

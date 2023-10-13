@@ -36,9 +36,12 @@ class PlayersViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        aview?.collectionView.delegate = self
+        aview?.collectionView.dataSource = self
+        aview?.collectionView.register(FootballPlayerCollectionViewCell.self)
         configureUI()
         bind()
-        
         aview?.activityIndicator.isHidden = false
         aview?.activityIndicator.startAnimating()
         viewModel.retrieveFootballPlayers() { [weak self] in
@@ -71,12 +74,66 @@ class PlayersViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.footballPlayersFilteredRelay
-            .bind { [weak self] universities in
-                guard let isFirstFetchDone = self?.viewModel.isFirstFetchDone else { return }
+            .bind { [weak self] _ in
+                //guard let isFirstFetchDone = self?.viewModel.isFirstFetchDone else { return }
                 DispatchQueue.main.async {
-                    self?.aview?.tableView.reloadData()
+                    self?.aview?.collectionView.reloadData()
                 }
             }
             .disposed(by: disposeBag)
+    }
+}
+
+extension PlayersViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.footballPlayersFilteredRelay.value.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: FootballPlayerCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        let footballPlayer = viewModel.footballPlayersFilteredRelay.value[indexPath.item]
+        
+            cell.configure(footballPlayer: footballPlayer)
+
+            cell.onStarButtonTapped = { [weak self] in
+                
+                self?.viewModel.didTappedStarButton(footballPlayer: footballPlayer)
+            }
+        //TODO: Manage favorites
+            /*if footballPlayer.isFavorite {
+                cell.bookmarkButton.setImage(UIImage(named: "star"), for: .normal)
+            } else {
+                cell.bookmarkButton.setImage(UIImage(named: "star.fill"), for: .normal)
+            }*/
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let footballPlayer = viewModel.footballPlayersFilteredRelay.value[indexPath.item]
+        //guard let footballPlayer = viewModel.footballPlayersFilteredRelay.value[safe: indexPath.item] else { return }
+        print("Hai tappato su \(footballPlayer.playerName)")
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let width: CGFloat = collectionView.frame.width
+        let height: CGFloat = 70
+
+        return CGSize(width: width, height: height)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let heightCondition = (section == 0)
+        return CGSize(width: collectionView.frame.width, height: heightCondition ? 16 : 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 16
     }
 }

@@ -21,9 +21,9 @@ class PlayersView: UIView {
         searchBar.placeholder = "Cerca calciatori"
         return searchBar
     }()
-
-    lazy var tableView: UITableView = {
-        let view = UITableView(frame: .zero)
+    
+    lazy var collectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         view.backgroundColor = Colors.white
         view.showsVerticalScrollIndicator = false
         return view
@@ -41,16 +41,16 @@ class PlayersView: UIView {
     
     private func configureUI() {
         backgroundColor = Colors.white
-        addSubview(tableView)
+        addSubview(collectionView)
         addSubview(activityIndicator)
     }
 
     private func configureConstraints() {
         activityIndicator.centerAnchors == centerAnchors
     
-        tableView.topAnchor == safeAreaLayoutGuide.topAnchor
-        tableView.leadingAnchor == leadingAnchor
-        tableView.trailingAnchor == trailingAnchor
-        tableView.bottomAnchor == bottomAnchor
+        collectionView.topAnchor == safeAreaLayoutGuide.topAnchor
+        collectionView.leadingAnchor == leadingAnchor
+        collectionView.trailingAnchor == trailingAnchor
+        collectionView.bottomAnchor == bottomAnchor
     }
 }
