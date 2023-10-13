@@ -27,7 +27,7 @@ struct FootballPlayerDTO: LegheFantaDTO {
     }
 }
 
-struct FootballPlayer {
+struct FootballPlayer: Codable { //Is Codable because without this Protocol we can not save this struct into UserDefaults
     let averageGrade: Double
     let teamAbbreviation: String
     let playerId: Int

@@ -30,6 +30,7 @@
 		FAEB165A2AD9A66C0048A967 /* UICollectionView+register.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB16592AD9A66C0048A967 /* UICollectionView+register.swift */; };
 		FAEB165C2AD9A70C0048A967 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB165B2AD9A70C0048A967 /* Reusable.swift */; };
 		FAEB165F2AD9A76C0048A967 /* FootballPlayerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB165E2AD9A76C0048A967 /* FootballPlayerCollectionViewCell.swift */; };
+		FAEB16652AD9DE210048A967 /* UserDefaultsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB16642AD9DE210048A967 /* UserDefaultsConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		FAEB16592AD9A66C0048A967 /* UICollectionView+register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+register.swift"; sourceTree = "<group>"; };
 		FAEB165B2AD9A70C0048A967 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		FAEB165E2AD9A76C0048A967 /* FootballPlayerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootballPlayerCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAEB16642AD9DE210048A967 /* UserDefaultsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 		FA8F19972AD85D4300004C60 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				FAEB16632AD9DE150048A967 /* Utilities */,
 				FA8F19A42AD85F0E00004C60 /* Extensions */,
 				FA8F19942AD85CF400004C60 /* Protocols */,
 			);
@@ -257,6 +260,14 @@
 				FAEB165E2AD9A76C0048A967 /* FootballPlayerCollectionViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FAEB16632AD9DE150048A967 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				FAEB16642AD9DE210048A967 /* UserDefaultsConfig.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,6 +404,7 @@
 				FAEB165C2AD9A70C0048A967 /* Reusable.swift in Sources */,
 				FAAF40572AD89BA900A0BD19 /* LegheFantaChallengeNavigationController.swift in Sources */,
 				FA14598A2AD977F500F5BF4E /* FootballPlayer.swift in Sources */,
+				FAEB16652AD9DE210048A967 /* UserDefaultsConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
