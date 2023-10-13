@@ -23,7 +23,8 @@ struct FootballPlayerDTO: LegheFantaDTO {
               playerName: playerName,
               imageURL: imageURL,
               averageFantaGrade: averageGrade,
-              gamesPlayed: gamesPlayed)
+              gamesPlayed: gamesPlayed,
+              isFavorite: FavoritesManager.shared.favoritePlayers.contains(where: {$0.playerId == playerId}))
     }
 }
 
@@ -35,4 +36,5 @@ struct FootballPlayer: Codable { //Is Codable because without this Protocol we c
     let imageURL: URL
     let averageFantaGrade: Double
     let gamesPlayed: Int
+    var isFavorite: Bool
 }
