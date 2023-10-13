@@ -11,9 +11,11 @@ import IQKeyboardManager
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var favoritesManager: FavoritesManager!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        //UserDefaultsConfig.clearAllKeys()
+        favoritesManager = FavoritesManager.shared
         IQKeyboardManager.shared().isEnabled = true
         return true
     }

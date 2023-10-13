@@ -86,6 +86,7 @@ class FootballPlayerCollectionViewCell: UICollectionViewCell, ReusableView {
         footballPlayerImageView.image = nil
         footballPlayerNameLabel.text = nil
         footballPlayerTeamNameLabel.text = nil
+        starButton.setImage(UIImage(systemName: "star")?.withRenderingMode(.alwaysOriginal).withTintColor(Colors.gray4), for: .normal)
     }
     // MARK: - Configure methods
     

@@ -31,6 +31,8 @@
 		FAEB165C2AD9A70C0048A967 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB165B2AD9A70C0048A967 /* Reusable.swift */; };
 		FAEB165F2AD9A76C0048A967 /* FootballPlayerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB165E2AD9A76C0048A967 /* FootballPlayerCollectionViewCell.swift */; };
 		FAEB16652AD9DE210048A967 /* UserDefaultsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB16642AD9DE210048A967 /* UserDefaultsConfig.swift */; };
+		FAEB16672AD9E0C20048A967 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB16662AD9E0C20048A967 /* FavoritesManager.swift */; };
+		FAEB16692AD9E0EE0048A967 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB16682AD9E0EE0048A967 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		FAEB165B2AD9A70C0048A967 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		FAEB165E2AD9A76C0048A967 /* FootballPlayerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootballPlayerCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAEB16642AD9DE210048A967 /* UserDefaultsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsConfig.swift; sourceTree = "<group>"; };
+		FAEB16662AD9E0C20048A967 /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
+		FAEB16682AD9E0EE0048A967 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +270,8 @@
 			isa = PBXGroup;
 			children = (
 				FAEB16642AD9DE210048A967 /* UserDefaultsConfig.swift */,
+				FAEB16662AD9E0C20048A967 /* FavoritesManager.swift */,
+				FAEB16682AD9E0EE0048A967 /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -389,6 +395,8 @@
 				FAAF40462AD87A0800A0BD19 /* FavouritePlayersView.swift in Sources */,
 				FAEB165A2AD9A66C0048A967 /* UICollectionView+register.swift in Sources */,
 				FAAF40452AD87A0800A0BD19 /* FavouritePlayersViewController.swift in Sources */,
+				FAEB16672AD9E0C20048A967 /* FavoritesManager.swift in Sources */,
+				FAEB16692AD9E0EE0048A967 /* Constants.swift in Sources */,
 				FAAF404D2AD87A2300A0BD19 /* PlayersViewModel.swift in Sources */,
 				FAAF40472AD87A0800A0BD19 /* FavouritePlayersViewModel.swift in Sources */,
 				FA8F19962AD85D0000004C60 /* Coordinator.swift in Sources */,
