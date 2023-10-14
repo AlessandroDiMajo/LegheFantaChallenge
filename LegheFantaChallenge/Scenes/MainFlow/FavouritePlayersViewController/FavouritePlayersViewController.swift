@@ -39,6 +39,7 @@ class FavouritePlayersViewController: UIViewController {
         aview?.collectionView.delegate = self
         aview?.collectionView.dataSource = self
         aview?.collectionView.register(FavoriteFootballPlayersCollectionViewCell.self)
+        aview?.collectionView.register(FavoriteFootballPlayersCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: FavoriteFootballPlayersCollectionViewHeader.defaultReuseIdentifier)
         configureUI()
         bind()
     }
@@ -98,10 +99,16 @@ extension FavouritePlayersViewController: UICollectionViewDelegate, UICollection
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         let heightCondition = (section == 0)
-        return CGSize(width: collectionView.frame.width, height: heightCondition ? 16 : 0)
+        return CGSize(width: collectionView.frame.width, height: heightCondition ? 35 : 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 16
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: FavoriteFootballPlayersCollectionViewHeader.defaultReuseIdentifier, for: indexPath) as? FavoriteFootballPlayersCollectionViewHeader else { fatalError() }
+        return header
+    }
+
 }
