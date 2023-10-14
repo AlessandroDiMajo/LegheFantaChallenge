@@ -18,6 +18,15 @@ class FavouritePlayersView: UIView {
         return view
     }()
 
+    lazy var emptyStateLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.isHidden = true
+        label.text = "Nessun preferito"
+        label.textColor = Colors.gray4
+        return label
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -31,6 +40,7 @@ class FavouritePlayersView: UIView {
     private func configureUI() {
         backgroundColor = Colors.gray
         addSubview(collectionView)
+        addSubview(emptyStateLabel)
     }
 
     private func configureConstraints() {
@@ -38,5 +48,7 @@ class FavouritePlayersView: UIView {
         collectionView.leadingAnchor == leadingAnchor
         collectionView.trailingAnchor == trailingAnchor
         collectionView.bottomAnchor == bottomAnchor
+
+        emptyStateLabel.centerAnchors == centerAnchors
     }
 }

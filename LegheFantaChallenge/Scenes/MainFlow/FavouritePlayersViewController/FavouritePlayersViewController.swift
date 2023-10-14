@@ -57,9 +57,9 @@ class FavouritePlayersViewController: UIViewController {
         guard let _ = aview else { return }
         
         viewModel.savedFootballPlayersRelay
-            .bind { [weak self] _ in
-                //guard let isFirstFetchDone = self?.viewModel.isFirstFetchDone else { return }
+            .bind { [weak self] playersList in
                 DispatchQueue.main.async {
+                    self?.aview?.emptyStateLabel.isHidden = !(playersList.isEmpty)
                     self?.aview?.collectionView.reloadData()
                 }
             }
@@ -70,7 +70,7 @@ class FavouritePlayersViewController: UIViewController {
 extension FavouritePlayersViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        1
+        return viewModel.savedFootballPlayersRelay.value.count == 0 ? 0 : 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

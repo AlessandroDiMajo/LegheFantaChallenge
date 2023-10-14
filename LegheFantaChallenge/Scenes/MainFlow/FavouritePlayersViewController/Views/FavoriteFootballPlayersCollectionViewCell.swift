@@ -160,7 +160,7 @@ class FavoriteFootballPlayersCollectionViewCell: UICollectionViewCell, ReusableV
         footballPlayerIconView.leadingAnchor == footballPlayerGeneralInfoView.leadingAnchor
 
         footballPlayerNameLabel.topAnchor == footballPlayerImageSquaredBackground.topAnchor + 7
-        footballPlayerNameLabel.leadingAnchor == footballPlayerImageSquaredBackground.trailingAnchor
+        footballPlayerNameLabel.leadingAnchor == footballPlayerImageSquaredBackground.trailingAnchor + 8
         footballPlayerNameLabel.trailingAnchor == footballPlayerGeneralInfoView.trailingAnchor
 
         footballPlayerTeamNameLabel.topAnchor == footballPlayerNameLabel.bottomAnchor + 5
