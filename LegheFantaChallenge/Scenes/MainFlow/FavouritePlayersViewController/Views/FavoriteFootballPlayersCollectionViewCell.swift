@@ -161,8 +161,6 @@ class FavoriteFootballPlayersCollectionViewCell: UICollectionViewCell, ReusableV
         
         footballPlayerStatsStackView.centerYAnchor == footballPlayerImageSquaredBackground.centerYAnchor
         footballPlayerStatsStackView.trailingAnchor == containerView.trailingAnchor - 16
-        
-        
     }
     
     func configure(footballPlayer: FootballPlayer) {
