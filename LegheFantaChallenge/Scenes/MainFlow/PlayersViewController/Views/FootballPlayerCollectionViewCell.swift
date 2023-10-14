@@ -37,7 +37,8 @@ class FootballPlayerCollectionViewCell: UICollectionViewCell, ReusableView {
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .fillEqually
+        stackView.spacing = 8
         return stackView
     }()
 
@@ -116,7 +117,7 @@ class FootballPlayerCollectionViewCell: UICollectionViewCell, ReusableView {
         footballPlayerImageView.heightAnchor == 40
         footballPlayerImageView.widthAnchor == 40
     
-        stackView.topAnchor == containerView.topAnchor + 16
+        stackView.topAnchor == containerView.topAnchor + 15
         stackView.leadingAnchor == footballPlayerImageSquaredBackground.trailingAnchor + 10
         stackView.bottomAnchor == containerView.bottomAnchor - 15
         
