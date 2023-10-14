@@ -11,6 +11,8 @@ import Kingfisher
 class FootballPlayerCollectionViewCell: UICollectionViewCell, ReusableView {
     
     var onStarButtonTapped: (() -> Void)?
+    private let CIRCLE_BACKGROUND_DIMENSION: CGFloat = 54
+    private let PLAYER_ICON_DIMENSION: CGFloat = 40
     
     // MARK: - UI
     
@@ -78,7 +80,7 @@ class FootballPlayerCollectionViewCell: UICollectionViewCell, ReusableView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        footballPlayerImageSquaredBackground.layer.cornerRadius = min(footballPlayerImageSquaredBackground.frame.width, footballPlayerImageSquaredBackground.frame.height) / 2
+        footballPlayerImageSquaredBackground.layer.cornerRadius = CIRCLE_BACKGROUND_DIMENSION / 2
     }
 
     override func prepareForReuse() {
@@ -110,12 +112,12 @@ class FootballPlayerCollectionViewCell: UICollectionViewCell, ReusableView {
         footballPlayerImageSquaredBackground.topAnchor == containerView.topAnchor + 8
         footballPlayerImageSquaredBackground.leadingAnchor == containerView.leadingAnchor + 8
         footballPlayerImageSquaredBackground.bottomAnchor == containerView.bottomAnchor - 8
-        footballPlayerImageSquaredBackground.widthAnchor == 54
-        footballPlayerImageSquaredBackground.heightAnchor == 54
+        footballPlayerImageSquaredBackground.widthAnchor.constraint(equalToConstant: CIRCLE_BACKGROUND_DIMENSION).isActive = true
+        footballPlayerImageSquaredBackground.heightAnchor.constraint(equalToConstant: CIRCLE_BACKGROUND_DIMENSION).isActive = true
 
         footballPlayerImageView.centerAnchors == footballPlayerImageSquaredBackground.centerAnchors
-        footballPlayerImageView.heightAnchor == 40
-        footballPlayerImageView.widthAnchor == 40
+        footballPlayerImageView.widthAnchor.constraint(equalToConstant: PLAYER_ICON_DIMENSION).isActive = true
+        footballPlayerImageView.heightAnchor.constraint(equalToConstant: PLAYER_ICON_DIMENSION).isActive = true
     
         stackView.topAnchor == containerView.topAnchor + 15
         stackView.leadingAnchor == footballPlayerImageSquaredBackground.trailingAnchor + 10
