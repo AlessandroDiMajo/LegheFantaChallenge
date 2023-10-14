@@ -31,14 +31,10 @@ class FavoriteFootballPlayersCollectionViewCell: UICollectionViewCell, ReusableV
         //view.image = placeholder //TODO: USE PLACEHOLDER
         return view
     }()
-
-    lazy var footballPlayerNameAndTeamStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        stackView.alignment = .leading
-        stackView.spacing = 8
-        return stackView
+    
+    lazy var footballPlayerIconView: UIView = {
+        let view = UIView()
+        return view
     }()
 
     lazy var footballPlayerNameLabel: UILabel = {
@@ -55,21 +51,19 @@ class FavoriteFootballPlayersCollectionViewCell: UICollectionViewCell, ReusableV
         label.textColor = Colors.gray3
         return label
     }()
-    
-    lazy var footballPlayerStatsStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.alignment = .trailing
-        stackView.spacing = 8
-        return stackView
+
+    lazy var footballPlayerGeneralInfoView: UIView = {
+        let view = UIView()
+        return view
     }()
+
 
     lazy var footballPlayerPGLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = Colors.gray3
+        label.textAlignment = .center
         return label
     }()
     
@@ -78,6 +72,7 @@ class FavoriteFootballPlayersCollectionViewCell: UICollectionViewCell, ReusableV
         label.numberOfLines = 1
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = Colors.gray3
+        label.textAlignment = .center
         return label
     }()
 
@@ -86,15 +81,23 @@ class FavoriteFootballPlayersCollectionViewCell: UICollectionViewCell, ReusableV
         label.numberOfLines = 1
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = Colors.gray3
+        label.textAlignment = .center
         return label
     }()
+
+    lazy var playerInfosStackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [footballPlayerPGLabel, footballPlayerMVLabel, footballPlayerMFVLabel])
+        view.axis = .horizontal
+        view.spacing = 8
+        view.distribution = .fillEqually
+        return view
+    }()
     
-    lazy var footballPlayerInfosStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.alignment = .fill
-        return stackView
+    lazy var mainStackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [footballPlayerGeneralInfoView, playerInfosStackView])
+        view.axis = .horizontal
+        view.distribution = .fillEqually
+        return view
     }()
 
     // MARK: - Initialization
@@ -127,40 +130,47 @@ class FavoriteFootballPlayersCollectionViewCell: UICollectionViewCell, ReusableV
     
     private func configureUI() {
         addSubview(containerView)
-        containerView.addSubview(footballPlayerImageSquaredBackground)
-        containerView.addSubview(footballPlayerImageView)
-        containerView.addSubview(footballPlayerNameAndTeamStackView)
-        footballPlayerNameAndTeamStackView.addArrangedSubview(footballPlayerNameLabel)
-        footballPlayerNameAndTeamStackView.addArrangedSubview(footballPlayerTeamNameLabel)
-        containerView.addSubview(footballPlayerStatsStackView)
-        footballPlayerStatsStackView.addArrangedSubview(footballPlayerPGLabel)
-        footballPlayerStatsStackView.addArrangedSubview(footballPlayerMVLabel)
-        footballPlayerStatsStackView.addArrangedSubview(footballPlayerMFVLabel)
+        footballPlayerIconView.addSubview(footballPlayerImageSquaredBackground)
+        footballPlayerIconView.addSubview(footballPlayerImageView)
+        footballPlayerGeneralInfoView.addSubview(footballPlayerIconView)
+        footballPlayerGeneralInfoView.addSubview(footballPlayerNameLabel)
+        footballPlayerGeneralInfoView.addSubview(footballPlayerTeamNameLabel)
+        containerView.addSubview(mainStackView)
     }
     
     
     private func configureConstraints() {
         containerView.topAnchor == topAnchor
-        containerView.leadingAnchor == leadingAnchor + 14
-        containerView.trailingAnchor == trailingAnchor - 14
+        containerView.leadingAnchor == leadingAnchor + 16
+        containerView.trailingAnchor == trailingAnchor - 16
         containerView.bottomAnchor == bottomAnchor
-
-        footballPlayerImageSquaredBackground.topAnchor == containerView.topAnchor + 8
-        footballPlayerImageSquaredBackground.leadingAnchor == containerView.leadingAnchor + 8
-        footballPlayerImageSquaredBackground.bottomAnchor == containerView.bottomAnchor - 8
+    
+        footballPlayerImageSquaredBackground.topAnchor == footballPlayerIconView.topAnchor + 8
+        footballPlayerImageSquaredBackground.leadingAnchor == footballPlayerIconView.leadingAnchor + 8
+        footballPlayerImageSquaredBackground.bottomAnchor == footballPlayerIconView.bottomAnchor - 8
         footballPlayerImageSquaredBackground.widthAnchor == 54
         footballPlayerImageSquaredBackground.heightAnchor == 54
 
         footballPlayerImageView.centerAnchors == footballPlayerImageSquaredBackground.centerAnchors
         footballPlayerImageView.heightAnchor == 40
         footballPlayerImageView.widthAnchor == 40
-    
-        footballPlayerNameAndTeamStackView.topAnchor == containerView.topAnchor + 15
-        footballPlayerNameAndTeamStackView.leadingAnchor == footballPlayerImageSquaredBackground.trailingAnchor + 10
-        footballPlayerNameAndTeamStackView.bottomAnchor == containerView.bottomAnchor - 15
+
+        footballPlayerIconView.centerYAnchor == footballPlayerGeneralInfoView.centerYAnchor
+        footballPlayerIconView.centerXAnchor == footballPlayerGeneralInfoView.centerXAnchor
+        footballPlayerIconView.leadingAnchor == footballPlayerGeneralInfoView.leadingAnchor
+
+        footballPlayerNameLabel.topAnchor == footballPlayerImageSquaredBackground.topAnchor + 7
+        footballPlayerNameLabel.leadingAnchor == footballPlayerImageSquaredBackground.trailingAnchor
+        footballPlayerNameLabel.trailingAnchor == footballPlayerGeneralInfoView.trailingAnchor
+
+        footballPlayerTeamNameLabel.topAnchor == footballPlayerNameLabel.bottomAnchor + 5
+        footballPlayerTeamNameLabel.leadingAnchor == footballPlayerNameLabel.leadingAnchor
+        footballPlayerTeamNameLabel.trailingAnchor == footballPlayerGeneralInfoView.trailingAnchor
         
-        footballPlayerStatsStackView.centerYAnchor == footballPlayerImageSquaredBackground.centerYAnchor
-        footballPlayerStatsStackView.trailingAnchor == containerView.trailingAnchor - 16
+        mainStackView.topAnchor == containerView.topAnchor
+        mainStackView.leadingAnchor == containerView.leadingAnchor
+        mainStackView.trailingAnchor == containerView.trailingAnchor
+        mainStackView.bottomAnchor == containerView.bottomAnchor
     }
     
     func configure(footballPlayer: FootballPlayer) {
