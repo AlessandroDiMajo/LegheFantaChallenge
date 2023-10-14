@@ -10,7 +10,9 @@ import Anchorage
 class FavouritePlayersView: UIView {
     
     lazy var collectionView: UICollectionView = {
-        let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionHeadersPinToVisibleBounds = true
+        let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         view.backgroundColor = Colors.white
         view.showsVerticalScrollIndicator = false
         return view
