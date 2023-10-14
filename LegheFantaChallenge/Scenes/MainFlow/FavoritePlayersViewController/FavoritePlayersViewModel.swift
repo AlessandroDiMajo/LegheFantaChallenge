@@ -1,5 +1,5 @@
 //
-//  FavouritePlayersViewModel.swift
+//  FavoritePlayersViewModel.swift
 //  LegheFantaChallenge
 //
 //  Created by Alessandro Di Majo on 12/10/23.
@@ -8,7 +8,7 @@
 import Foundation
 import RxCocoa
 
-class FavouritePlayersViewModel {
+class FavoritePlayersViewModel {
     
     let savedFootballPlayersRelay: BehaviorRelay<[FootballPlayer]> = BehaviorRelay<[FootballPlayer]>(value: [])
     

@@ -21,9 +21,9 @@
 		FA8F19962AD85D0000004C60 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F19952AD85D0000004C60 /* Coordinator.swift */; };
 		FA8F199D2AD85E1A00004C60 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F199C2AD85E1A00004C60 /* MainCoordinator.swift */; };
 		FA8F19A72AD85F2700004C60 /* UIWindow+SwitchRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F19A62AD85F2700004C60 /* UIWindow+SwitchRootViewController.swift */; };
-		FAAF40452AD87A0800A0BD19 /* FavouritePlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40422AD87A0800A0BD19 /* FavouritePlayersViewController.swift */; };
-		FAAF40462AD87A0800A0BD19 /* FavouritePlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40432AD87A0800A0BD19 /* FavouritePlayersView.swift */; };
-		FAAF40472AD87A0800A0BD19 /* FavouritePlayersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40442AD87A0800A0BD19 /* FavouritePlayersViewModel.swift */; };
+		FAAF40452AD87A0800A0BD19 /* FavoritePlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40422AD87A0800A0BD19 /* FavoritePlayersViewController.swift */; };
+		FAAF40462AD87A0800A0BD19 /* FavoritePlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40432AD87A0800A0BD19 /* FavoritePlayersView.swift */; };
+		FAAF40472AD87A0800A0BD19 /* FavoritePlayersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40442AD87A0800A0BD19 /* FavoritePlayersViewModel.swift */; };
 		FAAF404B2AD87A2300A0BD19 /* PlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40482AD87A2300A0BD19 /* PlayersViewController.swift */; };
 		FAAF404C2AD87A2300A0BD19 /* PlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40492AD87A2300A0BD19 /* PlayersView.swift */; };
 		FAAF404D2AD87A2300A0BD19 /* PlayersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF404A2AD87A2300A0BD19 /* PlayersViewModel.swift */; };
@@ -59,9 +59,9 @@
 		FA8F19952AD85D0000004C60 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		FA8F199C2AD85E1A00004C60 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		FA8F19A62AD85F2700004C60 /* UIWindow+SwitchRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+SwitchRootViewController.swift"; sourceTree = "<group>"; };
-		FAAF40422AD87A0800A0BD19 /* FavouritePlayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlayersViewController.swift; sourceTree = "<group>"; };
-		FAAF40432AD87A0800A0BD19 /* FavouritePlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlayersView.swift; sourceTree = "<group>"; };
-		FAAF40442AD87A0800A0BD19 /* FavouritePlayersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlayersViewModel.swift; sourceTree = "<group>"; };
+		FAAF40422AD87A0800A0BD19 /* FavoritePlayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlayersViewController.swift; sourceTree = "<group>"; };
+		FAAF40432AD87A0800A0BD19 /* FavoritePlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlayersView.swift; sourceTree = "<group>"; };
+		FAAF40442AD87A0800A0BD19 /* FavoritePlayersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlayersViewModel.swift; sourceTree = "<group>"; };
 		FAAF40482AD87A2300A0BD19 /* PlayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersViewController.swift; sourceTree = "<group>"; };
 		FAAF40492AD87A2300A0BD19 /* PlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersView.swift; sourceTree = "<group>"; };
 		FAAF404A2AD87A2300A0BD19 /* PlayersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersViewModel.swift; sourceTree = "<group>"; };
@@ -214,7 +214,7 @@
 		FA8F199B2AD85E0500004C60 /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
-				FA8F19A12AD85E7000004C60 /* FavouritePlayersViewController */,
+				FA8F19A12AD85E7000004C60 /* FavoritePlayersViewController */,
 				FA8F19A02AD85E6600004C60 /* PlayersViewController */,
 				FA8F199C2AD85E1A00004C60 /* MainCoordinator.swift */,
 			);
@@ -232,15 +232,15 @@
 			path = PlayersViewController;
 			sourceTree = "<group>";
 		};
-		FA8F19A12AD85E7000004C60 /* FavouritePlayersViewController */ = {
+		FA8F19A12AD85E7000004C60 /* FavoritePlayersViewController */ = {
 			isa = PBXGroup;
 			children = (
 				FA2873732ADAE8B900B840BA /* Views */,
-				FAAF40422AD87A0800A0BD19 /* FavouritePlayersViewController.swift */,
-				FAAF40432AD87A0800A0BD19 /* FavouritePlayersView.swift */,
-				FAAF40442AD87A0800A0BD19 /* FavouritePlayersViewModel.swift */,
+				FAAF40422AD87A0800A0BD19 /* FavoritePlayersViewController.swift */,
+				FAAF40432AD87A0800A0BD19 /* FavoritePlayersView.swift */,
+				FAAF40442AD87A0800A0BD19 /* FavoritePlayersViewModel.swift */,
 			);
-			path = FavouritePlayersViewController;
+			path = FavoritePlayersViewController;
 			sourceTree = "<group>";
 		};
 		FA8F19A42AD85F0E00004C60 /* Extensions */ = {
@@ -432,13 +432,13 @@
 				FA8F19A72AD85F2700004C60 /* UIWindow+SwitchRootViewController.swift in Sources */,
 				FAAF40502AD8822D00A0BD19 /* Colors.swift in Sources */,
 				FA2873782ADAF1A200B840BA /* sortPlayers.swift in Sources */,
-				FAAF40462AD87A0800A0BD19 /* FavouritePlayersView.swift in Sources */,
+				FAAF40462AD87A0800A0BD19 /* FavoritePlayersView.swift in Sources */,
 				FAEB165A2AD9A66C0048A967 /* UICollectionView+register.swift in Sources */,
-				FAAF40452AD87A0800A0BD19 /* FavouritePlayersViewController.swift in Sources */,
+				FAAF40452AD87A0800A0BD19 /* FavoritePlayersViewController.swift in Sources */,
 				FAEB16672AD9E0C20048A967 /* FavoritesManager.swift in Sources */,
 				FAEB16692AD9E0EE0048A967 /* Constants.swift in Sources */,
 				FAAF404D2AD87A2300A0BD19 /* PlayersViewModel.swift in Sources */,
-				FAAF40472AD87A0800A0BD19 /* FavouritePlayersViewModel.swift in Sources */,
+				FAAF40472AD87A0800A0BD19 /* FavoritePlayersViewModel.swift in Sources */,
 				FA8F19962AD85D0000004C60 /* Coordinator.swift in Sources */,
 				FAAF404C2AD87A2300A0BD19 /* PlayersView.swift in Sources */,
 				FAF8D6F22ADB41EA00B2B836 /* UIView+spacer.swift in Sources */,

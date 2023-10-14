@@ -31,7 +31,7 @@ class MainCoordinator: Coordinator {
             selectedImage: UIImage(systemName: "person.fill")?.withTintColor(Colors.blue)
         )
         
-        let secondVC = FavouritePlayersViewController(viewModel: .init())
+        let secondVC = FavoritePlayersViewController(viewModel: .init())
         secondVC.tabBarItem = UITabBarItem(
             title: "Preferiti",
             image: UIImage(systemName: "star.fill"),

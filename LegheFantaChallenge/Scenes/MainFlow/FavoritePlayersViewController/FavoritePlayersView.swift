@@ -1,5 +1,5 @@
 //
-//  FavouritePlayersView.swift
+//  FavoritePlayersView.swift
 //  LegheFantaChallenge
 //
 //  Created by Alessandro Di Majo on 12/10/23.
@@ -7,7 +7,7 @@
 
 import Anchorage
 
-class FavouritePlayersView: UIView {
+class FavoritePlayersView: UIView {
     
     lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()

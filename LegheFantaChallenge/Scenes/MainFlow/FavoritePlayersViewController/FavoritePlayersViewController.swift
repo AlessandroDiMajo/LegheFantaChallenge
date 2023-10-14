@@ -1,5 +1,5 @@
 //
-//  FavouritePlayersViewController.swift
+//  FavoritePlayersViewController.swift
 //  LegheFantaChallenge
 //
 //  Created by Alessandro Di Majo on 12/10/23.
@@ -9,19 +9,19 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol FavouritePlayersViewControllerDelegate: AnyObject { }
+protocol FavoritePlayersViewControllerDelegate: AnyObject { }
 
 class FavouritePlayersViewController: UIViewController {
     
-    var aview: FavouritePlayersView? {
-        return view as? FavouritePlayersView
+    var aview: FavoritePlayersView? {
+        return view as? FavoritePlayersView
     }
 
-    weak var delegate: FavouritePlayersViewControllerDelegate?
-    private let viewModel: FavouritePlayersViewModel
+    weak var delegate: FavoritePlayersViewControllerDelegate?
+    private let viewModel: FavoritePlayersViewModel
     private let disposeBag = DisposeBag()
     
-    init(viewModel: FavouritePlayersViewModel) {
+    init(viewModel: FavoritePlayersViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -31,7 +31,7 @@ class FavouritePlayersViewController: UIViewController {
     }
     
     override func loadView() {
-        view = FavouritePlayersView()
+        view = FavoritePlayersView()
     }
 
     override func viewDidLoad() {
@@ -67,7 +67,7 @@ class FavouritePlayersViewController: UIViewController {
     }
 }
 
-extension FavouritePlayersViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension FavoritePlayersViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.savedFootballPlayersRelay.value.count == 0 ? 0 : 1
