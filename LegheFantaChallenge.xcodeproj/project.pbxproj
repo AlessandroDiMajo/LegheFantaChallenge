@@ -27,6 +27,12 @@
 		FAAF40532AD882BC00A0BD19 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40522AD882BC00A0BD19 /* UIColor+hex.swift */; };
 		FAAF40552AD886F300A0BD19 /* LegheFantaChallengeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40542AD886F300A0BD19 /* LegheFantaChallengeTabBarController.swift */; };
 		FAAF40572AD89BA900A0BD19 /* LegheFantaChallengeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF40562AD89BA900A0BD19 /* LegheFantaChallengeNavigationController.swift */; };
+		FAEB165A2AD9A66C0048A967 /* UICollectionView+register.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB16592AD9A66C0048A967 /* UICollectionView+register.swift */; };
+		FAEB165C2AD9A70C0048A967 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB165B2AD9A70C0048A967 /* Reusable.swift */; };
+		FAEB165F2AD9A76C0048A967 /* FootballPlayerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB165E2AD9A76C0048A967 /* FootballPlayerCollectionViewCell.swift */; };
+		FAEB16652AD9DE210048A967 /* UserDefaultsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB16642AD9DE210048A967 /* UserDefaultsConfig.swift */; };
+		FAEB16672AD9E0C20048A967 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB16662AD9E0C20048A967 /* FavoritesManager.swift */; };
+		FAEB16692AD9E0EE0048A967 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEB16682AD9E0EE0048A967 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +60,12 @@
 		FAAF40522AD882BC00A0BD19 /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		FAAF40542AD886F300A0BD19 /* LegheFantaChallengeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegheFantaChallengeTabBarController.swift; sourceTree = "<group>"; };
 		FAAF40562AD89BA900A0BD19 /* LegheFantaChallengeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegheFantaChallengeNavigationController.swift; sourceTree = "<group>"; };
+		FAEB16592AD9A66C0048A967 /* UICollectionView+register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+register.swift"; sourceTree = "<group>"; };
+		FAEB165B2AD9A70C0048A967 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		FAEB165E2AD9A76C0048A967 /* FootballPlayerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootballPlayerCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAEB16642AD9DE210048A967 /* UserDefaultsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsConfig.swift; sourceTree = "<group>"; };
+		FAEB16662AD9E0C20048A967 /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
+		FAEB16682AD9E0EE0048A967 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +141,7 @@
 			children = (
 				FA8F19952AD85D0000004C60 /* Coordinator.swift */,
 				FA14598B2AD97A3300F5BF4E /* LegheFantaDTO.swift */,
+				FAEB165B2AD9A70C0048A967 /* Reusable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -136,6 +149,7 @@
 		FA8F19972AD85D4300004C60 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				FAEB16632AD9DE150048A967 /* Utilities */,
 				FA8F19A42AD85F0E00004C60 /* Extensions */,
 				FA8F19942AD85CF400004C60 /* Protocols */,
 			);
@@ -182,6 +196,7 @@
 		FA8F19A02AD85E6600004C60 /* PlayersViewController */ = {
 			isa = PBXGroup;
 			children = (
+				FAEB165D2AD9A75B0048A967 /* Views */,
 				FAAF40482AD87A2300A0BD19 /* PlayersViewController.swift */,
 				FAAF40492AD87A2300A0BD19 /* PlayersView.swift */,
 				FAAF404A2AD87A2300A0BD19 /* PlayersViewModel.swift */,
@@ -202,6 +217,7 @@
 		FA8F19A42AD85F0E00004C60 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FAEB16582AD9A65B0048A967 /* UICollectionView */,
 				FAAF40512AD882AE00A0BD19 /* UIColor */,
 				FA8F19A52AD85F1700004C60 /* UIWindow */,
 			);
@@ -232,6 +248,32 @@
 				FAAF40522AD882BC00A0BD19 /* UIColor+hex.swift */,
 			);
 			path = UIColor;
+			sourceTree = "<group>";
+		};
+		FAEB16582AD9A65B0048A967 /* UICollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				FAEB16592AD9A66C0048A967 /* UICollectionView+register.swift */,
+			);
+			path = UICollectionView;
+			sourceTree = "<group>";
+		};
+		FAEB165D2AD9A75B0048A967 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FAEB165E2AD9A76C0048A967 /* FootballPlayerCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FAEB16632AD9DE150048A967 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				FAEB16642AD9DE210048A967 /* UserDefaultsConfig.swift */,
+				FAEB16662AD9E0C20048A967 /* FavoritesManager.swift */,
+				FAEB16682AD9E0EE0048A967 /* Constants.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,7 +393,10 @@
 				FA8F19A72AD85F2700004C60 /* UIWindow+SwitchRootViewController.swift in Sources */,
 				FAAF40502AD8822D00A0BD19 /* Colors.swift in Sources */,
 				FAAF40462AD87A0800A0BD19 /* FavouritePlayersView.swift in Sources */,
+				FAEB165A2AD9A66C0048A967 /* UICollectionView+register.swift in Sources */,
 				FAAF40452AD87A0800A0BD19 /* FavouritePlayersViewController.swift in Sources */,
+				FAEB16672AD9E0C20048A967 /* FavoritesManager.swift in Sources */,
+				FAEB16692AD9E0EE0048A967 /* Constants.swift in Sources */,
 				FAAF404D2AD87A2300A0BD19 /* PlayersViewModel.swift in Sources */,
 				FAAF40472AD87A0800A0BD19 /* FavouritePlayersViewModel.swift in Sources */,
 				FA8F19962AD85D0000004C60 /* Coordinator.swift in Sources */,
@@ -359,12 +404,15 @@
 				FA8F19812AD85C4000004C60 /* AppDelegate.swift in Sources */,
 				FA8F199D2AD85E1A00004C60 /* MainCoordinator.swift in Sources */,
 				FA14598C2AD97A3300F5BF4E /* LegheFantaDTO.swift in Sources */,
+				FAEB165F2AD9A76C0048A967 /* FootballPlayerCollectionViewCell.swift in Sources */,
 				FAAF40552AD886F300A0BD19 /* LegheFantaChallengeTabBarController.swift in Sources */,
 				FA8F19832AD85C4000004C60 /* SceneDelegate.swift in Sources */,
 				FAAF404B2AD87A2300A0BD19 /* PlayersViewController.swift in Sources */,
 				FAAF40532AD882BC00A0BD19 /* UIColor+hex.swift in Sources */,
+				FAEB165C2AD9A70C0048A967 /* Reusable.swift in Sources */,
 				FAAF40572AD89BA900A0BD19 /* LegheFantaChallengeNavigationController.swift in Sources */,
 				FA14598A2AD977F500F5BF4E /* FootballPlayer.swift in Sources */,
+				FAEB16652AD9DE210048A967 /* UserDefaultsConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

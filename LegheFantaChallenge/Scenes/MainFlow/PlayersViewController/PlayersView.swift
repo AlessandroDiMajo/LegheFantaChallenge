@@ -21,14 +21,23 @@ class PlayersView: UIView {
         searchBar.placeholder = "Cerca calciatori"
         return searchBar
     }()
-
-    lazy var tableView: UITableView = {
-        let view = UITableView(frame: .zero)
+    
+    lazy var collectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         view.backgroundColor = Colors.white
         view.showsVerticalScrollIndicator = false
         return view
     }()
 
+    lazy var emptyStateLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.isHidden = true
+        label.text = "La ricerca non ha prodotto risultati"
+        label.textColor = Colors.gray4
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -41,16 +50,19 @@ class PlayersView: UIView {
     
     private func configureUI() {
         backgroundColor = Colors.white
-        addSubview(tableView)
+        addSubview(collectionView)
         addSubview(activityIndicator)
+        addSubview(emptyStateLabel)
     }
 
     private func configureConstraints() {
         activityIndicator.centerAnchors == centerAnchors
     
-        tableView.topAnchor == safeAreaLayoutGuide.topAnchor
-        tableView.leadingAnchor == leadingAnchor
-        tableView.trailingAnchor == trailingAnchor
-        tableView.bottomAnchor == bottomAnchor
+        collectionView.topAnchor == safeAreaLayoutGuide.topAnchor
+        collectionView.leadingAnchor == leadingAnchor
+        collectionView.trailingAnchor == trailingAnchor
+        collectionView.bottomAnchor == bottomAnchor
+        
+        emptyStateLabel.centerAnchors == centerAnchors
     }
 }
