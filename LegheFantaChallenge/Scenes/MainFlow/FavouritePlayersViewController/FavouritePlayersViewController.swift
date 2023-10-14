@@ -36,6 +36,9 @@ class FavouritePlayersViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        aview?.collectionView.delegate = self
+        aview?.collectionView.dataSource = self
+        aview?.collectionView.register(FavoriteFootballPlayersCollectionViewCell.self)
         configureUI()
         bind()
     }
@@ -50,6 +53,55 @@ class FavouritePlayersViewController: UIViewController {
     }
     
     private func bind() {
-        guard let aView = aview else { return }
+        guard let _ = aview else { return }
+        
+        viewModel.savedFootballPlayersRelay
+            .bind { [weak self] _ in
+                //guard let isFirstFetchDone = self?.viewModel.isFirstFetchDone else { return }
+                DispatchQueue.main.async {
+                    self?.aview?.collectionView.reloadData()
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+}
+
+extension FavouritePlayersViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.savedFootballPlayersRelay.value.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: FavoriteFootballPlayersCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        let footballPlayer = viewModel.savedFootballPlayersRelay.value[indexPath.item]
+        cell.configure(footballPlayer: footballPlayer)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let footballPlayer = viewModel.savedFootballPlayersRelay.value[indexPath.item]
+        print("Hai tappato su \(footballPlayer.playerName)")
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let width: CGFloat = collectionView.frame.width
+        let height: CGFloat = 70
+
+        return CGSize(width: width, height: height)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let heightCondition = (section == 0)
+        return CGSize(width: collectionView.frame.width, height: heightCondition ? 16 : 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 16
     }
 }
