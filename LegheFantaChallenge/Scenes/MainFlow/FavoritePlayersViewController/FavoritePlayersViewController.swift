@@ -11,7 +11,7 @@ import RxCocoa
 
 protocol FavoritePlayersViewControllerDelegate: AnyObject { }
 
-class FavouritePlayersViewController: UIViewController {
+class FavoritePlayersViewController: UIViewController {
     
     var aview: FavoritePlayersView? {
         return view as? FavoritePlayersView

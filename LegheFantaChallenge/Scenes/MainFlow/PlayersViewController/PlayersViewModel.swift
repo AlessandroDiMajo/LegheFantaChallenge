@@ -96,8 +96,6 @@ class PlayersViewModel {
     
     func overrideDataSourceBySearchBar(text: String) {
         print("Start overrideDataSourceBySearchBar")
-        let lowerCasedText = text.lowercased()
-        
         print("footballPlayers now are \(footballPlayersRelay.value.count)")
         let filteredPlayers = filterPlayersByText(input: footballPlayersRelay.value, text: text)
         print("filteredPlayers now are \(filteredPlayers.count)")
