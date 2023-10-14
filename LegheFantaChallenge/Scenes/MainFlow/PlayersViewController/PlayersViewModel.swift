@@ -74,9 +74,14 @@ class PlayersViewModel {
                     let footballPlayers = footballPlayerDTOs.map { dto in
                         return dto.toDomainModel()
                     }
-                    self?.footballPlayersRelay.accept(footballPlayers)
-                    self?.footballPlayersFilteredRelay.accept(footballPlayers)
-                    print("Hai ben \(footballPlayers.count) calciatori")
+                    let managedFavoritePlayers = footballPlayers.map { originalPlayer in
+                        var player = originalPlayer
+                        player.isFavorite = FavoritesManager.shared.favoritePlayers.contains { $0.playerId == player.playerId }
+                        return player
+                    }
+                    self?.footballPlayersRelay.accept(managedFavoritePlayers)
+                    self?.footballPlayersFilteredRelay.accept(managedFavoritePlayers)
+                    print("Hai ben \(managedFavoritePlayers.count) calciatori")
                 } catch {
                     print("Errore durante la decodifica del JSON: \(error)")
                     self?.errorRelay.accept(.decodingError)

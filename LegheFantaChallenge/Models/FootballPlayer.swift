@@ -24,7 +24,7 @@ struct FootballPlayerDTO: LegheFantaDTO {
               imageURL: imageURL,
               averageFantaGrade: averageGrade,
               gamesPlayed: gamesPlayed,
-              isFavorite: FavoritesManager.shared.favoritePlayers.contains(where: {$0.playerId == playerId}))
+              isFavorite: false) // As defaults
     }
 }
 
