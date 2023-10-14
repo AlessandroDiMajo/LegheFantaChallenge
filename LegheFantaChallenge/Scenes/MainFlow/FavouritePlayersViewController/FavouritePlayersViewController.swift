@@ -85,7 +85,7 @@ extension FavouritePlayersViewController: UICollectionViewDelegate, UICollection
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let footballPlayer = viewModel.savedFootballPlayersRelay.value[indexPath.item]
-        print("Hai tappato su \(footballPlayer.playerName)")
+        print("Tapped on \(footballPlayer.playerName)")
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -11,6 +11,8 @@
 		FA14598A2AD977F500F5BF4E /* FootballPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1459892AD977F500F5BF4E /* FootballPlayer.swift */; };
 		FA14598C2AD97A3300F5BF4E /* LegheFantaDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA14598B2AD97A3300F5BF4E /* LegheFantaDTO.swift */; };
 		FA2873752ADAE8D300B840BA /* FavoriteFootballPlayersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2873742ADAE8D300B840BA /* FavoriteFootballPlayersCollectionViewCell.swift */; };
+		FA2873782ADAF1A200B840BA /* sortPlayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2873772ADAF1A200B840BA /* sortPlayers.swift */; };
+		FA28737A2ADAF21000B840BA /* filterPlayersByText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2873792ADAF21000B840BA /* filterPlayersByText.swift */; };
 		FA8F19812AD85C4000004C60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F19802AD85C4000004C60 /* AppDelegate.swift */; };
 		FA8F19832AD85C4000004C60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F19822AD85C4000004C60 /* SceneDelegate.swift */; };
 		FA8F198A2AD85C4200004C60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8F19892AD85C4200004C60 /* Assets.xcassets */; };
@@ -43,6 +45,8 @@
 		FA1459892AD977F500F5BF4E /* FootballPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootballPlayer.swift; sourceTree = "<group>"; };
 		FA14598B2AD97A3300F5BF4E /* LegheFantaDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegheFantaDTO.swift; sourceTree = "<group>"; };
 		FA2873742ADAE8D300B840BA /* FavoriteFootballPlayersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFootballPlayersCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA2873772ADAF1A200B840BA /* sortPlayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sortPlayers.swift; sourceTree = "<group>"; };
+		FA2873792ADAF21000B840BA /* filterPlayersByText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filterPlayersByText.swift; sourceTree = "<group>"; };
 		FA8F197D2AD85C4000004C60 /* LegheFantaChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LegheFantaChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8F19802AD85C4000004C60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA8F19822AD85C4000004C60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +117,15 @@
 				FA2873742ADAE8D300B840BA /* FavoriteFootballPlayersCollectionViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FA2873762ADAF18A00B840BA /* PublicFunctions */ = {
+			isa = PBXGroup;
+			children = (
+				FA2873772ADAF1A200B840BA /* sortPlayers.swift */,
+				FA2873792ADAF21000B840BA /* filterPlayersByText.swift */,
+			);
+			path = PublicFunctions;
 			sourceTree = "<group>";
 		};
 		FA8F19742AD85C4000004C60 = {
@@ -280,6 +293,7 @@
 		FAEB16632AD9DE150048A967 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				FA2873762ADAF18A00B840BA /* PublicFunctions */,
 				FAEB16642AD9DE210048A967 /* UserDefaultsConfig.swift */,
 				FAEB16662AD9E0C20048A967 /* FavoritesManager.swift */,
 				FAEB16682AD9E0EE0048A967 /* Constants.swift */,
@@ -403,6 +417,7 @@
 			files = (
 				FA8F19A72AD85F2700004C60 /* UIWindow+SwitchRootViewController.swift in Sources */,
 				FAAF40502AD8822D00A0BD19 /* Colors.swift in Sources */,
+				FA2873782ADAF1A200B840BA /* sortPlayers.swift in Sources */,
 				FAAF40462AD87A0800A0BD19 /* FavouritePlayersView.swift in Sources */,
 				FAEB165A2AD9A66C0048A967 /* UICollectionView+register.swift in Sources */,
 				FAAF40452AD87A0800A0BD19 /* FavouritePlayersViewController.swift in Sources */,
@@ -420,6 +435,7 @@
 				FA8F19832AD85C4000004C60 /* SceneDelegate.swift in Sources */,
 				FAAF404B2AD87A2300A0BD19 /* PlayersViewController.swift in Sources */,
 				FAAF40532AD882BC00A0BD19 /* UIColor+hex.swift in Sources */,
+				FA28737A2ADAF21000B840BA /* filterPlayersByText.swift in Sources */,
 				FAEB165C2AD9A70C0048A967 /* Reusable.swift in Sources */,
 				FA2873752ADAE8D300B840BA /* FavoriteFootballPlayersCollectionViewCell.swift in Sources */,
 				FAAF40572AD89BA900A0BD19 /* LegheFantaChallengeNavigationController.swift in Sources */,
