@@ -48,25 +48,13 @@ class FavoriteFootballPlayersCollectionViewHeader: UICollectionReusableView, Reu
         return label
     }()
 
-    lazy var playerInfosStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [footballPlayerPGLabel, footballPlayerMVLabel, footballPlayerMFVLabel])
-        view.axis = .horizontal
-        view.spacing = 8
-        view.distribution = .fillEqually
-        return view
-    }()
-    
-    lazy var mainStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [footballPlayerNameLabel, playerInfosStackView])
-        view.axis = .horizontal
-        view.distribution = .fillEqually
-        return view
-    }()
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = Colors.white
-        addSubview(mainStackView)
+        addSubview(footballPlayerNameLabel)
+        addSubview(footballPlayerPGLabel)
+        addSubview(footballPlayerMVLabel)
+        addSubview(footballPlayerMFVLabel)
     }
     
     override func layoutSubviews() {
@@ -78,11 +66,31 @@ class FavoriteFootballPlayersCollectionViewHeader: UICollectionReusableView, Reu
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configureConstraints() {
-        mainStackView.topAnchor == topAnchor
-        mainStackView.leadingAnchor == leadingAnchor + 16
-        mainStackView.trailingAnchor == trailingAnchor - 16
-        mainStackView.bottomAnchor == bottomAnchor
+    private func configureConstraints() {
+        
+        addSubview(footballPlayerNameLabel)
+        addSubview(footballPlayerPGLabel)
+        addSubview(footballPlayerMVLabel)
+        addSubview(footballPlayerMFVLabel)
+        
+        footballPlayerNameLabel.centerYAnchor == centerYAnchor
+        footballPlayerNameLabel.leadingAnchor == leadingAnchor + 16
+        
+        footballPlayerPGLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        footballPlayerMVLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        footballPlayerMFVLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
+
+        
+        footballPlayerMFVLabel.centerYAnchor == centerYAnchor
+        footballPlayerMFVLabel.trailingAnchor == trailingAnchor - 32
+        
+        footballPlayerMVLabel.centerYAnchor == centerYAnchor
+        footballPlayerMVLabel.trailingAnchor == footballPlayerMFVLabel.leadingAnchor - 8
+        
+        
+        footballPlayerPGLabel.centerYAnchor == centerYAnchor
+        footballPlayerPGLabel.trailingAnchor == footballPlayerMVLabel.leadingAnchor - 8
+        footballPlayerPGLabel.leadingAnchor >= footballPlayerNameLabel.leadingAnchor
+
     }
 }
-

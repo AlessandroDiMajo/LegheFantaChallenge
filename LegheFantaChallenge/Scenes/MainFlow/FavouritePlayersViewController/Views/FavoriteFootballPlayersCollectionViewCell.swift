@@ -85,16 +85,13 @@ class FavoriteFootballPlayersCollectionViewCell: UICollectionViewCell, ReusableV
         return label
     }()
 
-    lazy var playerInfosStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [footballPlayerPGLabel, footballPlayerMVLabel, footballPlayerMFVLabel])
-        view.axis = .horizontal
-        view.spacing = 8
-        view.distribution = .fillEqually
+    lazy var playerInfosView: UIView = {
+        let view = UIView()
         return view
     }()
-    
+
     lazy var mainStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [footballPlayerGeneralInfoView, playerInfosStackView])
+        let view = UIStackView(arrangedSubviews: [footballPlayerGeneralInfoView, playerInfosView])
         view.axis = .horizontal
         view.distribution = .fillEqually
         return view
@@ -135,6 +132,10 @@ class FavoriteFootballPlayersCollectionViewCell: UICollectionViewCell, ReusableV
         footballPlayerGeneralInfoView.addSubview(footballPlayerIconView)
         footballPlayerGeneralInfoView.addSubview(footballPlayerNameLabel)
         footballPlayerGeneralInfoView.addSubview(footballPlayerTeamNameLabel)
+    
+        playerInfosView.addSubview(footballPlayerPGLabel)
+        playerInfosView.addSubview(footballPlayerMVLabel)
+        playerInfosView.addSubview(footballPlayerMFVLabel)
         containerView.addSubview(mainStackView)
     }
     
@@ -166,6 +167,21 @@ class FavoriteFootballPlayersCollectionViewCell: UICollectionViewCell, ReusableV
         footballPlayerTeamNameLabel.topAnchor == footballPlayerNameLabel.bottomAnchor + 5
         footballPlayerTeamNameLabel.leadingAnchor == footballPlayerNameLabel.leadingAnchor
         footballPlayerTeamNameLabel.trailingAnchor == footballPlayerGeneralInfoView.trailingAnchor
+        
+        
+        footballPlayerPGLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        footballPlayerMVLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        footballPlayerMFVLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
+
+        footballPlayerMFVLabel.centerYAnchor == playerInfosView.centerYAnchor
+        footballPlayerMFVLabel.trailingAnchor == playerInfosView.trailingAnchor - 16
+        
+        footballPlayerMVLabel.centerYAnchor == playerInfosView.centerYAnchor
+        footballPlayerMVLabel.trailingAnchor == footballPlayerMFVLabel.leadingAnchor - 8
+        
+        footballPlayerPGLabel.centerYAnchor == playerInfosView.centerYAnchor
+        footballPlayerPGLabel.trailingAnchor == footballPlayerMVLabel.leadingAnchor - 8
+        footballPlayerPGLabel.leadingAnchor >= playerInfosView.leadingAnchor
         
         mainStackView.topAnchor == containerView.topAnchor
         mainStackView.leadingAnchor == containerView.leadingAnchor
