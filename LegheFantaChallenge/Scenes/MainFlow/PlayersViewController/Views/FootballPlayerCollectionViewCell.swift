@@ -37,7 +37,7 @@ class FootballPlayerCollectionViewCell: UICollectionViewCell, ReusableView {
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 8
+        stackView.distribution = .equalSpacing
         return stackView
     }()
 
@@ -58,7 +58,6 @@ class FootballPlayerCollectionViewCell: UICollectionViewCell, ReusableView {
 
     lazy var starButton: UIButton = {
         let button = UIButton()
-        //TODO: Remove from this point and manage into the vc
         button.setImage(UIImage(systemName: "star")?.withRenderingMode(.alwaysOriginal).withTintColor(Colors.gray4), for: .normal)
         return button
     }()

@@ -103,7 +103,7 @@ class PlayersViewModel {
                 return player1.playerName < player2.playerName
             }
         }
-            print("sortedPlayer now are \(sortedPlayers.count)")
+        print("sortedPlayer now are \(sortedPlayers.count)")
         footballPlayersFilteredRelay.accept(sortedPlayers)
     }
     
