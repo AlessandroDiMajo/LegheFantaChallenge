@@ -19,6 +19,7 @@ class PlayersView: UIView {
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.placeholder = "Cerca calciatori"
+        searchBar.searchTextField.clearButtonMode = .never
         return searchBar
     }()
     
