@@ -66,6 +66,10 @@ class PlayersViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
+
+        let spacer = UIView.init(frame: .init(x: 0, y: 0, width: 20, height: 0))
+        aview?.searchBar.searchTextField.rightView = spacer
+        aview?.searchBar.searchTextField.rightViewMode = .always
     }
     
     private func configureUI() {

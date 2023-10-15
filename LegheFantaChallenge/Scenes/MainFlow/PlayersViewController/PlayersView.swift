@@ -75,7 +75,7 @@ class PlayersView: UIView {
         
         emptyStateLabel.centerAnchors == centerAnchors
         
-        microphoneButton.centerYAnchor == searchBar.searchTextField.centerYAnchor
-        microphoneButton.trailingAnchor == searchBar.searchTextField.trailingAnchor - 8
+        microphoneButton.centerYAnchor == searchBar.centerYAnchor
+        microphoneButton.trailingAnchor == searchBar.trailingAnchor - 24
     }
 }
