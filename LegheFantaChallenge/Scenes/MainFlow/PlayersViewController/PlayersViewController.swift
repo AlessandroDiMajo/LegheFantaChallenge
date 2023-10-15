@@ -143,10 +143,11 @@ class PlayersViewController: UIViewController {
                 aview?.microphoneButton.tintColor = .red
             }
             recognitionTask = speechRecognizer?.recognitionTask(with: request!, resultHandler: { [weak self] result, error in
+                guard let self = self else { return }
                 if let result = result, result.isFinal {
                     let bestString = result.bestTranscription.formattedString
-                    let oldStringValue = self?.aview?.searchBar.searchTextField.text ?? ""
-                    self?.aview?.searchBar.searchTextField.text = oldStringValue + bestString
+                    self.aview?.searchBar.searchTextField.text? +=  bestString
+                    self.aview?.searchBar.searchTextField.sendActions(for: .valueChanged)
                 } else if let error = error {
                     print("Error: \(error)")
                 }
