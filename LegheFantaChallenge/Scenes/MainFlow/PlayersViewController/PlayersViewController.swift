@@ -25,7 +25,7 @@ class PlayersViewController: UIViewController {
     
     // MARK: - Speech implementation
     fileprivate let audioEngine = AVAudioEngine()
-    fileprivate let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
+    fileprivate let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer(locale: Locale.init(identifier: "it_IT"))
     fileprivate var request: SFSpeechAudioBufferRecognitionRequest?
     fileprivate var recognitionTask: SFSpeechRecognitionTask?
     
@@ -128,12 +128,10 @@ class PlayersViewController: UIViewController {
     func startRecording() {
         guard !audioEngine.isRunning else {
             DispatchQueue.main.sync { [weak self] in
-                aview?.microphoneButton.tintColor = Colors.gray6
-                if let text = aview?.searchBar.searchTextField.text {
-                    self?.viewModel.overrideDataSourceBySearchBar(text: text)
-                }
+                self?.aview?.microphoneButton.tintColor = Colors.gray6
             }
             audioEngine.stop()
+            audioEngine.inputNode.removeTap(onBus: 0)
             request?.endAudio()
             return
         }
@@ -145,7 +143,7 @@ class PlayersViewController: UIViewController {
                 aview?.microphoneButton.tintColor = .red
             }
             recognitionTask = speechRecognizer?.recognitionTask(with: request!, resultHandler: { [weak self] result, error in
-                if let result = result {
+                if let result = result, result.isFinal {
                     let bestString = result.bestTranscription.formattedString
                     let oldStringValue = self?.aview?.searchBar.searchTextField.text ?? ""
                     self?.aview?.searchBar.searchTextField.text = oldStringValue + bestString
