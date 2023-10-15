@@ -26,7 +26,7 @@ class PlayersViewController: UIViewController {
     // MARK: - Speech implementation
     fileprivate let audioEngine = AVAudioEngine()
     fileprivate let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
-    fileprivate let request = SFSpeechAudioBufferRecognitionRequest()
+    fileprivate var request: SFSpeechAudioBufferRecognitionRequest?
     fileprivate var recognitionTask: SFSpeechRecognitionTask?
     
     init(viewModel: PlayersViewModel) {
@@ -105,11 +105,10 @@ class PlayersViewController: UIViewController {
     
     @objc
     private func microphoneButtonTapped() {
-        
         SFSpeechRecognizer.requestAuthorization { [weak self] (authStatus) in
             switch authStatus {
             case .authorized:
-                self?.recordAndRecognizeSpeech()
+                self?.startRecording()
                 break
             case .denied, .restricted, .notDetermined:
                 guard let appSettings = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(appSettings) else { return }
@@ -126,41 +125,48 @@ class PlayersViewController: UIViewController {
         }
     }
     
-    private func recordAndRecognizeSpeech() {
-        let node = audioEngine.inputNode
-        let recordingFormat = node.outputFormat(forBus: 0)
-        node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
-            self.request.append (buffer)
+    func startRecording() {
+        guard !audioEngine.isRunning else {
+            DispatchQueue.main.sync { [weak self] in
+                aview?.microphoneButton.tintColor = Colors.gray6
+                if let text = aview?.searchBar.searchTextField.text {
+                    self?.viewModel.overrideDataSourceBySearchBar(text: text)
+                }
+            }
+            audioEngine.stop()
+            request?.endAudio()
+            return
         }
-        audioEngine.prepare()
         do {
+            request = SFSpeechAudioBufferRecognitionRequest()
+            
+            let inputNode = audioEngine.inputNode
+            DispatchQueue.main.sync {
+                aview?.microphoneButton.tintColor = .red
+            }
+            recognitionTask = speechRecognizer?.recognitionTask(with: request!, resultHandler: { [weak self] result, error in
+                if let result = result {
+                    let bestString = result.bestTranscription.formattedString
+                    let oldStringValue = self?.aview?.searchBar.searchTextField.text ?? ""
+                    self?.aview?.searchBar.searchTextField.text = oldStringValue + bestString
+                } else if let error = error {
+                    print("Error: \(error)")
+                }
+            })
+            
+            let recordingFormat = inputNode.outputFormat(forBus: 0)
+            inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
+                self.request?.append(buffer)
+            }
+            
+            audioEngine.prepare()
             try audioEngine.start()
         } catch {
-            return print(error)
-        }
-        
-        guard let speechRecognizer = SFSpeechRecognizer() else {
-            audioEngine.stop()
-            // A recognizer is not supported for the current locale
-            return
-        }
-        if !speechRecognizer.isAvailable {
-            audioEngine.stop()
-            // A recognizer is not available right now
-            return
-        }
-        
-        recognitionTask = self.speechRecognizer?.recognitionTask(with: request, resultHandler: { [weak self] result, error in
-            if let result = result {
-                let bestString = result.bestTranscription.formattedString
-                let oldStringValue = self?.aview?.searchBar.searchTextField.text ?? ""
-                self?.aview?.searchBar.searchTextField.text = oldStringValue + bestString
-                self?.audioEngine.stop()
-            } else if let error = error {
-                self?.audioEngine.stop()
-                print (error)
+            DispatchQueue.main.sync {
+                aview?.microphoneButton.tintColor = Colors.gray6
             }
-        })
+            print("Error: \(error)")
+        }
     }
 }
 
