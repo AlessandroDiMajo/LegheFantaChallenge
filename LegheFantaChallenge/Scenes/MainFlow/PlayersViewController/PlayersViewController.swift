@@ -66,10 +66,11 @@ class PlayersViewController: UIViewController {
         guard let aView = aview else { return }
         
         aView.searchBar.searchTextField.rx.text
+            .skip(1)
             .debounce(.milliseconds(400), scheduler: MainScheduler.instance)
             .bind { [weak self] text in
                 guard let text = text else { return }
-                self?.viewModel.filterFootballPlayersList(text: text)
+                self?.viewModel.overrideDataSourceBySearchBar(text: text)
             }
             .disposed(by: disposeBag)
         
@@ -120,7 +121,7 @@ extension PlayersViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let footballPlayer = viewModel.footballPlayersFilteredRelay.value[indexPath.item]
-        print("Hai tappato su \(footballPlayer.playerName)")
+        print("Tapped on \(footballPlayer.playerName)")
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -1,5 +1,5 @@
 //
-//  FavouritePlayersView.swift
+//  FavoritePlayersView.swift
 //  LegheFantaChallenge
 //
 //  Created by Alessandro Di Majo on 12/10/23.
@@ -7,13 +7,24 @@
 
 import Anchorage
 
-class FavouritePlayersView: UIView {
+class FavoritePlayersView: UIView {
     
     lazy var collectionView: UICollectionView = {
-        let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionHeadersPinToVisibleBounds = true
+        let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         view.backgroundColor = Colors.white
         view.showsVerticalScrollIndicator = false
         return view
+    }()
+
+    lazy var emptyStateLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.isHidden = true
+        label.text = "Nessun preferito"
+        label.textColor = Colors.gray4
+        return label
     }()
 
     override init(frame: CGRect) {
@@ -29,6 +40,7 @@ class FavouritePlayersView: UIView {
     private func configureUI() {
         backgroundColor = Colors.gray
         addSubview(collectionView)
+        addSubview(emptyStateLabel)
     }
 
     private func configureConstraints() {
@@ -36,5 +48,7 @@ class FavouritePlayersView: UIView {
         collectionView.leadingAnchor == leadingAnchor
         collectionView.trailingAnchor == trailingAnchor
         collectionView.bottomAnchor == bottomAnchor
+
+        emptyStateLabel.centerAnchors == centerAnchors
     }
 }

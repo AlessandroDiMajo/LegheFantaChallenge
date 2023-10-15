@@ -12,15 +12,8 @@ class FavoritesManager {
     
     var favoritePlayers: [FootballPlayer] = [] {
         didSet {
-            print("favoritePlayers changed")
-            
-            let sortedPlayers = favoritePlayers.sorted { (player1, player2) in
-                if player1.teamAbbreviation != player2.teamAbbreviation {
-                    return player1.teamAbbreviation < player2.teamAbbreviation
-                } else {
-                    return player1.playerName < player2.playerName
-                }
-            }
+            print("favoritePlayers into FavoritesManager changed")
+            let sortedPlayers = sortPlayers(input: favoritePlayers)
             UserDefaultsConfig.favoritePlayers = sortedPlayers
             NotificationCenter.default.post(name: Notification.Name(Constants.Notifications.favoritesUpdated.rawValue), object: nil)
         }
