@@ -598,7 +598,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2ZG6287PXY;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LegheFantaChallenge/Info.plist;
+				INFOPLIST_FILE = LegheFantaChallenge/App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LegheFantaChallenge;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = /App/LaunchScreen;
@@ -631,7 +631,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2ZG6287PXY;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LegheFantaChallenge/Info.plist;
+				INFOPLIST_FILE = LegheFantaChallenge/App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LegheFantaChallenge;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = /App/LaunchScreen;
