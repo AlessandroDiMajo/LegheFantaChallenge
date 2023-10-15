@@ -15,6 +15,7 @@ struct Colors {
     static let gray3 = UIColor(hex: "#001E30")
     static let gray4 = UIColor(hex: "#727272")
     static let gray5 = UIColor(hex: "#E6E6E7")
+    static let gray6 = UIColor(hex: "#3C3C43").withAlphaComponent(0.66)
     static let blue = UIColor(hex: "#007AFF")
     static let white = UIColor(hex: "FFFFFF")
 }

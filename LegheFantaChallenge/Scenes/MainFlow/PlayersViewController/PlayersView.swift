@@ -22,6 +22,14 @@ class PlayersView: UIView {
         return searchBar
     }()
     
+    lazy var microphoneButton: UIButton = {
+        let button = UIButton()
+        button.isHidden = true
+        button.tintColor = Colors.gray6
+        button.setImage(UIImage(systemName: "mic.fill"), for: .normal)
+        return button
+    }()
+
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         view.backgroundColor = Colors.white
@@ -53,6 +61,7 @@ class PlayersView: UIView {
         addSubview(collectionView)
         addSubview(activityIndicator)
         addSubview(emptyStateLabel)
+        searchBar.addSubview(microphoneButton)
     }
 
     private func configureConstraints() {
@@ -64,5 +73,8 @@ class PlayersView: UIView {
         collectionView.bottomAnchor == bottomAnchor
         
         emptyStateLabel.centerAnchors == centerAnchors
+        
+        microphoneButton.centerYAnchor == searchBar.searchTextField.centerYAnchor
+        microphoneButton.trailingAnchor == searchBar.searchTextField.trailingAnchor - 8
     }
 }

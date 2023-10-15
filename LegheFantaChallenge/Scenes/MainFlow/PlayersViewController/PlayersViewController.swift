@@ -39,6 +39,7 @@ class PlayersViewController: UIViewController {
         super.viewDidLoad()
         aview?.collectionView.delegate = self
         aview?.collectionView.dataSource = self
+        aview?.searchBar.delegate = self
         aview?.collectionView.register(FootballPlayerCollectionViewCell.self)
         configureUI()
         bind()
@@ -51,13 +52,14 @@ class PlayersViewController: UIViewController {
             }
         }
         navigationController?.navigationBar.topItem?.titleView = aview?.searchBar
+        aview?.microphoneButton.addTarget(self, action: #selector(microphoneButtonTapped), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
     }
-
+    
     private func configureUI() {
         
     }
@@ -92,7 +94,13 @@ class PlayersViewController: UIViewController {
             }
             .disposed(by: disposeBag)
     }
+    
+    @objc
+    private func microphoneButtonTapped() {
+        print("microphoneButtonTapped")
+    }
 }
+
 
 extension PlayersViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -139,3 +147,15 @@ extension PlayersViewController: UICollectionViewDelegate, UICollectionViewDataS
         return 16
     }
 }
+
+extension PlayersViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        print("SearchBar is focus")
+        aview?.microphoneButton.isHidden = false
+    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print("SearchBar loses the focus")
+        aview?.microphoneButton.isHidden = true
+    }
+}
+
