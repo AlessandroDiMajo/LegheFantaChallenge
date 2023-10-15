@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import NotificationBannerSwift
+import Speech
 
 protocol PlayersViewControllerDelegate: AnyObject { }
 
@@ -21,6 +22,12 @@ class PlayersViewController: UIViewController {
     weak var delegate: PlayersViewControllerDelegate?
     private let viewModel: PlayersViewModel
     private let disposeBag = DisposeBag()
+    
+    // MARK: - Speech implementation
+    fileprivate let audioEngine = AVAudioEngine()
+    fileprivate let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer(locale: Locale.init(identifier: "it_IT"))
+    fileprivate var request: SFSpeechAudioBufferRecognitionRequest?
+    fileprivate var recognitionTask: SFSpeechRecognitionTask?
     
     init(viewModel: PlayersViewModel) {
         self.viewModel = viewModel
@@ -40,6 +47,7 @@ class PlayersViewController: UIViewController {
         aview?.collectionView.delegate = self
         aview?.collectionView.dataSource = self
         aview?.searchBar.delegate = self
+        speechRecognizer?.delegate = self
         aview?.collectionView.register(FootballPlayerCollectionViewCell.self)
         configureUI()
         bind()
@@ -58,6 +66,10 @@ class PlayersViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
+
+        let spacer = UIView.init(frame: .init(x: 0, y: 0, width: 20, height: 0))
+        aview?.searchBar.searchTextField.rightView = spacer
+        aview?.searchBar.searchTextField.rightViewMode = .always
     }
     
     private func configureUI() {
@@ -97,7 +109,67 @@ class PlayersViewController: UIViewController {
     
     @objc
     private func microphoneButtonTapped() {
-        print("microphoneButtonTapped")
+        SFSpeechRecognizer.requestAuthorization { [weak self] (authStatus) in
+            switch authStatus {
+            case .authorized:
+                self?.startRecording()
+                break
+            case .denied, .restricted, .notDetermined:
+                guard let appSettings = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(appSettings) else { return }
+                DispatchQueue.main.async {
+                    UIApplication.shared.open(appSettings)
+                }
+                break
+            @unknown default:
+                guard let appSettings = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(appSettings) else { return }
+                DispatchQueue.main.async {
+                    UIApplication.shared.open(appSettings)
+                }
+            }
+        }
+    }
+    
+    func startRecording() {
+        guard !audioEngine.isRunning else {
+            DispatchQueue.main.sync { [weak self] in
+                self?.aview?.microphoneButton.tintColor = Colors.gray6
+            }
+            audioEngine.stop()
+            audioEngine.inputNode.removeTap(onBus: 0)
+            request?.endAudio()
+            return
+        }
+        do {
+            request = SFSpeechAudioBufferRecognitionRequest()
+            
+            let inputNode = audioEngine.inputNode
+            DispatchQueue.main.sync {
+                aview?.microphoneButton.tintColor = .red
+            }
+            recognitionTask = speechRecognizer?.recognitionTask(with: request!, resultHandler: { [weak self] result, error in
+                guard let self = self else { return }
+                if let result = result, result.isFinal {
+                    let bestString = result.bestTranscription.formattedString
+                    self.aview?.searchBar.searchTextField.text? +=  bestString
+                    self.aview?.searchBar.searchTextField.sendActions(for: .valueChanged)
+                } else if let error = error {
+                    print("Error: \(error)")
+                }
+            })
+            
+            let recordingFormat = inputNode.outputFormat(forBus: 0)
+            inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
+                self.request?.append(buffer)
+            }
+            
+            audioEngine.prepare()
+            try audioEngine.start()
+        } catch {
+            DispatchQueue.main.sync {
+                aview?.microphoneButton.tintColor = Colors.gray6
+            }
+            print("Error: \(error)")
+        }
     }
 }
 
@@ -159,3 +231,4 @@ extension PlayersViewController: UISearchBarDelegate {
     }
 }
 
+extension PlayersViewController: SFSpeechRecognizerDelegate {}
