@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import NotificationBannerSwift
+import Speech
 
 protocol PlayersViewControllerDelegate: AnyObject { }
 
@@ -21,6 +22,12 @@ class PlayersViewController: UIViewController {
     weak var delegate: PlayersViewControllerDelegate?
     private let viewModel: PlayersViewModel
     private let disposeBag = DisposeBag()
+    
+    // MARK: - Speech implementation
+    fileprivate let audioEngine = AVAudioEngine()
+    fileprivate let speechRecognizer: SFSpeechRecognizer? = SFSpeechRecognizer()
+    fileprivate let request = SFSpeechAudioBufferRecognitionRequest()
+    fileprivate var recognitionTask: SFSpeechRecognitionTask?
     
     init(viewModel: PlayersViewModel) {
         self.viewModel = viewModel
@@ -40,6 +47,7 @@ class PlayersViewController: UIViewController {
         aview?.collectionView.delegate = self
         aview?.collectionView.dataSource = self
         aview?.searchBar.delegate = self
+        speechRecognizer?.delegate = self
         aview?.collectionView.register(FootballPlayerCollectionViewCell.self)
         configureUI()
         bind()
@@ -97,7 +105,62 @@ class PlayersViewController: UIViewController {
     
     @objc
     private func microphoneButtonTapped() {
-        print("microphoneButtonTapped")
+        
+        SFSpeechRecognizer.requestAuthorization { [weak self] (authStatus) in
+            switch authStatus {
+            case .authorized:
+                self?.recordAndRecognizeSpeech()
+                break
+            case .denied, .restricted, .notDetermined:
+                guard let appSettings = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(appSettings) else { return }
+                DispatchQueue.main.async {
+                    UIApplication.shared.open(appSettings)
+                }
+                break
+            @unknown default:
+                guard let appSettings = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(appSettings) else { return }
+                DispatchQueue.main.async {
+                    UIApplication.shared.open(appSettings)
+                }
+            }
+        }
+    }
+    
+    private func recordAndRecognizeSpeech() {
+        let node = audioEngine.inputNode
+        let recordingFormat = node.outputFormat(forBus: 0)
+        node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
+            self.request.append (buffer)
+        }
+        audioEngine.prepare()
+        do {
+            try audioEngine.start()
+        } catch {
+            return print(error)
+        }
+        
+        guard let speechRecognizer = SFSpeechRecognizer() else {
+            audioEngine.stop()
+            // A recognizer is not supported for the current locale
+            return
+        }
+        if !speechRecognizer.isAvailable {
+            audioEngine.stop()
+            // A recognizer is not available right now
+            return
+        }
+        
+        recognitionTask = self.speechRecognizer?.recognitionTask(with: request, resultHandler: { [weak self] result, error in
+            if let result = result {
+                let bestString = result.bestTranscription.formattedString
+                let oldStringValue = self?.aview?.searchBar.searchTextField.text ?? ""
+                self?.aview?.searchBar.searchTextField.text = oldStringValue + bestString
+                self?.audioEngine.stop()
+            } else if let error = error {
+                self?.audioEngine.stop()
+                print (error)
+            }
+        })
     }
 }
 
@@ -159,3 +222,4 @@ extension PlayersViewController: UISearchBarDelegate {
     }
 }
 
+extension PlayersViewController: SFSpeechRecognizerDelegate {}
