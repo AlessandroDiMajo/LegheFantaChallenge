@@ -8,9 +8,10 @@
 import Foundation
 
 class FavoritesManager {
+
     static let shared = FavoritesManager()
     
-    var favoritePlayers: [FootballPlayer] = [] {
+    private(set) var favoritePlayers: [FootballPlayer] = [] {
         didSet {
             print("favoritePlayers into FavoritesManager changed")
             let sortedPlayers = sortPlayers(input: favoritePlayers)

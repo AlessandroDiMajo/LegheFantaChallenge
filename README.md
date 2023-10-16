@@ -15,5 +15,25 @@ The project is created with:
 * UIKit
     
 ## Architecture
+In Italian:
+Per questo progetto, è stata adottata un'architettura MVVM+C (Model-View-ViewModel + Coordinator). La gestione del salvataggio dei dati dei giocatori di calcio è affidata al FavoritesManager. Una volta invocata la sua funzione dedicata, il FavoritesManager assume la responsabilità di monitorare i dati in memoria, sovrascriverli e quindi notificare l'intera applicazione sugli aggiornamenti. Le view controllers sono incaricati di osservare tali notifiche e di aggiornare l'interfaccia utente di conseguenza.
+
+In English:
+For this project, an MVVM+C (Model-View-ViewModel + Coordinator) architecture has been adopted. The management of football player data storage is entrusted to the FavoritesManager. Once its dedicated function is called, the FavoritesManager takes on the responsibility of monitoring the in-memory data, overwriting them, and subsequently notifying the entire application about updates. The view controllers are responsible for observing these notifications and updating the user interface accordingly.
 
 ## Dependencies
+In Italian:
+Kingfisher -> utilizzato per la memorizzazione nella cache e il download di immagini.
+Anchorage -> impiegato per una gestione più semplice dell'interfaccia utente.
+RxSwift & RxCocoa -> utilizzati per la programmazione reattiva.
+NotificationBannerSwift -> utilizzato per visualizzare notifiche di errore nell'interfaccia utente.
+SwiftLint -> integrato per una migliore qualità del codice.
+IQKeyboardManager -> implementato per una gestione semplificata della comparsa e scomparsa della tastiera.
+
+In English:
+Kingfisher -> used for image caching and downloading.
+Anchorage -> utilized for more straightforward UI management.
+RxSwift & RxCocoa -> employed for reactive programming.
+NotificationBannerSwift -> employed for displaying error notifications within the UI.
+SwiftLint -> integrated for improved code quality.
+IQKeyboardManager -> implemented for streamlined keyboard show/hide management
