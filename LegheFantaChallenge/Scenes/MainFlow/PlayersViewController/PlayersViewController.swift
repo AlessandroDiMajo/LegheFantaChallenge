@@ -53,12 +53,7 @@ class PlayersViewController: UIViewController {
         bind()
         aview?.activityIndicator.isHidden = false
         aview?.activityIndicator.startAnimating()
-        viewModel.retrieveFootballPlayers() { [weak self] in
-            DispatchQueue.main.async {
-                self?.aview?.activityIndicator.stopAnimating()
-                self?.aview?.activityIndicator.isHidden = true
-            }
-        }
+        viewModel.retrieveFootballPlayers()
         navigationController?.navigationBar.topItem?.titleView = aview?.searchBar
         aview?.microphoneButton.addTarget(self, action: #selector(microphoneButtonTapped), for: .touchUpInside)
     }
@@ -79,6 +74,30 @@ class PlayersViewController: UIViewController {
     private func bind() {
         guard let aView = aview else { return }
         
+        viewModel.stateRelay
+                .bind { [weak self] state in
+                    switch state {
+                    case .loading:
+                        DispatchQueue.main.async {
+                            self?.aview?.activityIndicator.isHidden = false
+                            self?.aview?.activityIndicator.startAnimating()
+                        }
+                    case .loaded:
+                        DispatchQueue.main.async {
+                            self?.aview?.activityIndicator.isHidden = true
+                            self?.aview?.activityIndicator.stopAnimating()
+                        }
+                    case .error(let error):
+                        DispatchQueue.main.async {
+                            self?.aview?.activityIndicator.isHidden = true
+                            self?.aview?.activityIndicator.stopAnimating()
+                            let banner = FloatingNotificationBanner(title: error.errorTitle, subtitle: error.errorDescription, style: .danger)
+                            banner.show()
+                        }
+                    }
+                }
+                .disposed(by: disposeBag)
+
         aView.searchBar.searchTextField.rx.text
             .skip(1)
             .debounce(.milliseconds(400), scheduler: MainScheduler.instance)
@@ -93,15 +112,6 @@ class PlayersViewController: UIViewController {
                 DispatchQueue.main.async {
                     self?.aview?.emptyStateLabel.isHidden = !(playersList.isEmpty)
                     self?.aview?.collectionView.reloadData()
-                }
-            }
-            .disposed(by: disposeBag)
-        
-        viewModel.errorRelay
-            .bind { error in
-                DispatchQueue.main.async {
-                    let banner = FloatingNotificationBanner(title: error.errorTitle, subtitle: error.errorDescription, style: .danger)
-                    banner.show()
                 }
             }
             .disposed(by: disposeBag)

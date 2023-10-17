@@ -9,7 +9,13 @@ import Foundation
 import RxCocoa
 
 class PlayersViewModel {
-    
+
+    enum ViewState {
+        case loading
+        case loaded
+        case error(PlayersViewModelError)
+    }
+
     enum PlayersViewModelError: Error {
         case somethingsWentWrong
         case decodingError
@@ -23,9 +29,9 @@ class PlayersViewModel {
         }
     }
    
-    let errorRelay = PublishRelay<PlayersViewModelError>()
     let footballPlayersRelay: BehaviorRelay<[FootballPlayer]> = BehaviorRelay<[FootballPlayer]>(value: [])
     let footballPlayersFilteredRelay: BehaviorRelay<[FootballPlayer]> = BehaviorRelay<[FootballPlayer]>(value: [])
+    let stateRelay = BehaviorRelay<ViewState>(value: .loading)
     fileprivate let url: URL = URL(string: "https://content.fantacalcio.it/test/test.json")!
     
     init() {
@@ -61,14 +67,16 @@ class PlayersViewModel {
         footballPlayersFilteredRelay.accept(updatedFilteredPlayers)
     }
 
-    func retrieveFootballPlayers(completion: (() -> Void)?) {
+    func retrieveFootballPlayers() {
+        stateRelay.accept(.loading)
         URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard let self = self else { return }
+
             guard error == nil else {
-                self.errorRelay.accept(.somethingsWentWrong)
-                completion?()
+                self.stateRelay.accept(.error(.somethingsWentWrong))
                 return
             }
+
             if let data = data {
                 do {
                     let footballPlayerDTOs = try JSONDecoder().decode([FootballPlayerDTO].self, from: data)
@@ -85,11 +93,11 @@ class PlayersViewModel {
                     self.footballPlayersRelay.accept(sortedPlayers)
                     self.footballPlayersFilteredRelay.accept(sortedPlayers)
                     print("You have \(managedFavoritePlayers.count) football players")
+                    self.stateRelay.accept(.loaded)
                 } catch {
                     print("Decoding error: \(error)")
-                    self.errorRelay.accept(.decodingError)
+                    self.stateRelay.accept(.error(.decodingError))
                 }
-                completion?()
             }
         }.resume()
     }
